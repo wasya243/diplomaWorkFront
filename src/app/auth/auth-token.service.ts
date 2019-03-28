@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from '../core/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,19 @@ export class AuthTokenService {
 
   private accessToken: string;
 
-  hasAccessToken(): boolean {
+  constructor(private storageService: StorageService) {
+    const user = this.storageService.get('user', true);
+    if (user) {
+      this.accessToken = user.accessToken;
+    }
+  }
 
+  hasAccessToken(): boolean {
     return Boolean(this.accessToken);
   }
 
-  setAccessToken(token): void {
-    this.accessToken = token;
+  setToken(accessToken): void {
+    this.accessToken = accessToken;
   }
 
   getAccessToken(): string {
@@ -21,7 +28,7 @@ export class AuthTokenService {
     return this.accessToken;
   }
 
-  removeAccessToken(): void {
+  removeToken(): void {
     this.accessToken = null;
   }
 

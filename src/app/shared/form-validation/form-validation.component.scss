@@ -1,0 +1,27 @@
+@import "variables";
+
+.app-form-validation-error-message {
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: -0.2px;
+  color: $app-error-color;
+  margin: 5px 0 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+:host {
+  position: relative;
+  display: block;
+}
+
+.custom-pull-right {
+  position: absolute;
+  left: 118px;
+}
+
+;

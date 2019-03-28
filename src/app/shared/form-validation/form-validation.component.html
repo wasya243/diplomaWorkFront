@@ -1,0 +1,6 @@
+<div [ngClass]="{'app-error-label': isInvalid(), 'app-form-error': isInvalid() && isGroup}" class="container-fluid">
+  <ng-content></ng-content>
+</div>
+<div class="row app-form-validation-error-message" *ngIf="isInvalid()">
+  <div class="{{ 'offset-' + offset }} {{ 'col-' + (12 - offset) }}">{{getError()}}</div>
+</div>

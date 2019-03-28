@@ -1,0 +1,38 @@
+<div class="login-form-wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="app-form-header">
+      Login
+    </div>
+
+    <app-form-validation [validationElement]="loginForm.get('email')" [offset]="0">
+      <div class="form-group mb-0">
+        <label for="loginEmail" class="app-login-input-label">Email Address</label>
+        <input type="email" class="app-form-control app-error-border" [ngClass]="{'error-border': errorMessage}"
+               (input)="onInput()"
+               placeholder="Your email address" id="loginEmail" formControlName="email">
+      </div>
+    </app-form-validation>
+
+    <app-form-validation [validationElement]="loginForm.get('password')" [offset]="0">
+      <div class="form-group mb-1 mt-4">
+        <label for="loginPassword" class="app-login-input-label">Password</label>
+        <input [attr.type]="currentState.type" class="app-form-control app-error-border"
+               [ngClass]="{'error-border': errorMessage}" (input)="onInput()"
+               placeholder="password" id="loginPassword" formControlName="password">
+        <div class="icon-wrapper">
+          <fa-icon [icon]="currentState.eye" [className]="currentState.class" (click)="onShowPassword()"></fa-icon>
+        </div>
+      </div>
+    </app-form-validation>
+
+
+    <div class="error-message" *ngIf="errorMessage">{{errorMessage}}</div>
+
+    <div class="login-form-footer">
+      <button type="submit" class="app-btn app-btn-primary" [disabled]="loginForm.touched && !loginForm.valid"
+              id="loginSubmit">Sign In
+      </button>
+    </div>
+  </form>
+</div>

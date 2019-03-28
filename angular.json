@@ -32,6 +32,11 @@
                 "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles"
+              ]
+            },
             "scripts": [],
             "es5BrowserSupport": true
           },

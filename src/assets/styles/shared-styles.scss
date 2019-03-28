@@ -1,0 +1,203 @@
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+
+html, body {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  background: $app-very-light-blue !important;
+  font-family: Barlow, sans-serif !important;
+}
+
+.app-control-btn {
+  padding: 0 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: $app-bright-blue;
+  }
+}
+
+.mt-30px {
+  margin-top: 30px;
+}
+
+.modal-body {
+  &__label-wrapper {
+    display: flex;
+    align-items: flex-end;
+    .app-login-input-label {
+      margin-bottom: 7px !important;
+    }
+  }
+}
+
+.modal-header {
+  &__wrapper {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.app-form-wrapper {
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 60px;
+  border: solid 0.8px $app-light-grey;
+}
+
+.app-form-header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  height: 3.19rem;
+  margin-bottom: 41px;
+}
+
+.app-form-footer {
+  text-align: center;
+}
+
+.app-btn-log-in {
+  width: 11.5rem;
+  height: 2.25rem;
+  border-radius: 4px;
+  background-color: $app-primary-button-color;
+}
+
+.app-login-input-label {
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+
+.ng-touched.ng-invalid.app-error-border {
+  border: 1px solid $app-error-color;
+}
+
+.app-form-error .app-error-border {
+  border: 1px solid $app-error-color !important;
+}
+
+.app-error-label label {
+  color: $app-error-color;
+}
+
+.app-btn {
+  @extend .btn;
+  width: 11.625rem;
+  height: 2.25rem;
+}
+
+.app-btn-primary {
+  @extend .btn-primary;
+  border: none;
+  background-color: $app-primary-button-color;
+  &:disabled {
+    background-color: $app-primary-button-disabled;
+  }
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 107, 253, 0.2);
+  }
+  &:active {
+    background-color: $app-dark-blue;
+  }
+}
+
+.app-btn-light {
+  @extend .btn-light;
+  border: solid 1px $app-ice-blue;
+  background-color: #ffffff;
+  &:disabled {
+    border-color: $app-light-periwinkle;
+    background-color: $app-ice-blue;
+  }
+  &:hover {
+    box-shadow: 0 4px 6px 0 rgba(0, 107, 253, 0.16), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    border-color: $app-bright-blue;
+  }
+  &:active {
+    background-color: #ecf3ff;
+    border-color: $app-bright-blue;
+  }
+}
+
+.app-form-control {
+  @extend .form-control;
+  border-radius: 4px;
+  border: solid 1px $app-light-periwinkle;
+  background-color: #ffffff;
+  &:hover {
+    border: solid 1px $app-bright-blue;
+  }
+  &:active {
+    box-shadow: 0 4px 6px 0 rgba(0, 107, 253, 0.16), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    border: solid 1px $app-bright-blue;
+  }
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.modal-dialog {
+  max-width: 598px !important;
+
+  &.modal-lg {
+    max-width: 718px !important;
+  }
+
+  &.modal-md {
+    max-width: 598px !important;
+  }
+
+  .modal-content {
+    border-radius: 8px;
+    box-shadow: 16px 24px 24px 0px rgba(10, 19, 28, 0.2);
+
+    .modal {
+      &-header,
+      &-body,
+      &-footer {
+        padding-left: 60px;
+        padding-right: 60px;
+      }
+
+      &-header {
+        padding-top: 60px;
+        justify-content: center;
+        border: none;
+      }
+
+      &-title {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      &-body {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      &-footer {
+        padding-top: 30px;
+        padding-bottom: 60px;
+
+        .btn:not(:last-child) {
+          margin-right: 30px;
+        }
+      }
+    }
+
+  }
+}
+
+.btn-outline-secondary {
+  color: $app-almost-black;
+}
