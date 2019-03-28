@@ -12,8 +12,16 @@ declare namespace diploma {
     role: string;
   }
 
-  interface ICredentials {
+  interface ILogInCredentials {
     email: string;
     password: string;
+  }
+
+  interface ISignUpCredentials {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    role: number;
   }
 }

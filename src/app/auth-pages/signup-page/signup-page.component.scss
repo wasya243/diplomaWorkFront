@@ -1,0 +1,71 @@
+@import "shared-styles";
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.signup-form-wrapper {
+  width: 392px;
+  height: auto;
+  background: white;
+  background-position-x: right;
+  background-position-y: center;
+  background-size: 80% 100%;
+  @extend .app-form-wrapper;
+}
+
+.login-form-footer {
+  margin-top: 30px;
+  @extend .app-form-footer;
+}
+
+.forgot-password-wrapper {
+  text-align: right;
+  margin-right: 15px;
+  margin-top: -5px;
+}
+
+.forgot-password {
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: -0.2px;
+  text-decoration: underline;
+  position: relative;
+  cursor: pointer;
+}
+
+.icon-wrapper {
+  position: relative;
+  right: -216px;
+  top: -30px;
+  height: 0;
+}
+
+.show {
+  color: $app-bright-blue;
+}
+
+.hide {
+  color: $app-almost-black;
+}
+
+.error-message {
+  color: $app-error-color;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: -0.2px;
+  margin: 0 15px;
+}
+
+.error-border {
+  border: 1px solid $app-error-color;
+}

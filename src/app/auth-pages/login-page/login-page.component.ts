@@ -40,6 +40,7 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  // TODO: check if I really need it
   ngOnInit() {
     this.authService.isAuthorized() && this.router.navigate([ 'admin' ]);
   }

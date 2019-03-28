@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { LoginPageComponent } from './auth-pages/login-page/login-page.component';
 import { AccessDeniedComponent } from './common-pages/access-denied/access-denied.component';
+import { SignupPageComponent } from './auth-pages/signup-page/signup-page.component';
 
 const appRoutes: Routes = [
   {
@@ -13,6 +14,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignupPageComponent
   },
   {
     path: 'admin',

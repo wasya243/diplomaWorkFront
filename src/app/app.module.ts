@@ -13,12 +13,14 @@ import { LoginPageComponent } from './auth-pages/login-page/login-page.component
 import { AccessDeniedComponent } from './common-pages/access-denied/access-denied.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppInterceptor } from './app.interceptor';
+import { SignupPageComponent } from './auth-pages/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,

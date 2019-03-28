@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import IUserData = diploma.IUserData;
-import ICredentials = diploma.ICredentials;
+import ILogInCredentials = diploma.ILogInCredentials;
+import ISignUpCredentials = diploma.ISignUpCredentials;
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,8 @@ export class AuthService {
   ) {
   }
 
-  login(credentials: ICredentials): Observable<any> {
-    return this.http.post('/auth/sign-in', credentials)
+  login(loginCredentials: ILogInCredentials): Observable<any> {
+    return this.http.post('/auth/sign-in', loginCredentials)
       .pipe(map((userData: IUserData) => {
         const { accessToken } = userData;
         this.authTokenService.setToken(accessToken);
@@ -48,6 +49,14 @@ export class AuthService {
             id: userData.userInfo.id
           }
         });
+      }));
+  }
+
+  signup(credentials: ISignUpCredentials): Observable<void> {
+    return this.http.post('/auth/sign-up', credentials)
+      .pipe(map((userData: any) => {
+        // TODO: start handling action
+        console.log(userData);
       }));
   }
 

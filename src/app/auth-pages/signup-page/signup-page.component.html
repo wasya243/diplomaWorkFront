@@ -1,0 +1,58 @@
+<div class="signup-form-wrapper ">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+    <div class="app-form-header">
+      Sign Up
+    </div>
+
+    <app-form-validation [validationElement]="signupForm.get('firstName')" [offset]="0">
+      <div class="form-group mb-0">
+        <label for="firstName" class="app-login-input-label">First name</label>
+        <input type="text" class="app-form-control app-error-border" [ngClass]="{'error-border': errorMessage}"
+               (input)="onInput()"
+               placeholder="Your first name" id="firstName" formControlName="firstName">
+      </div>
+    </app-form-validation>
+
+    <app-form-validation [validationElement]="signupForm.get('lastName')" [offset]="0">
+      <div class="form-group mb-1 mt-4">
+        <label for="lastName" class="app-login-input-label">Last name</label>
+        <input type="text" class="app-form-control app-error-border" [ngClass]="{'error-border': errorMessage}"
+               (input)="onInput()"
+               placeholder="Your your last name" id="lastName" formControlName="lastName">
+      </div>
+    </app-form-validation>
+
+    <app-form-validation [validationElement]="signupForm.get('email')" [offset]="0">
+      <div class="form-group mb-1 mt-4">
+        <label for="loginEmail" class="app-login-input-label">Email Address</label>
+        <input type="email" class="app-form-control app-error-border" [ngClass]="{'error-border': errorMessage}"
+               (input)="onInput()"
+               placeholder="Your email address" id="loginEmail" formControlName="email">
+      </div>
+    </app-form-validation>
+
+    <app-form-validation [validationElement]="signupForm.get('password')" [offset]="0">
+      <div class="form-group mb-1 mt-4">
+        <label for="loginPassword" class="app-login-input-label">Password</label>
+        <input [attr.type]="currentState.type" class="app-form-control app-error-border"
+               [ngClass]="{'error-border': errorMessage}" (input)="onInput()"
+               placeholder="password" id="loginPassword" formControlName="password">
+        <div class="icon-wrapper">
+          <fa-icon [icon]="currentState.eye" [className]="currentState.class" (click)="onShowPassword()"></fa-icon>
+        </div>
+      </div>
+    </app-form-validation>
+
+    <div class="forgot-password-wrapper">
+      <a class="forgot-password" routerLink="/login" routerLinkActive="active">Log in</a>
+    </div>
+    <div class="error-message" *ngIf="errorMessage">{{errorMessage}}</div>
+
+    <div class="login-form-footer">
+      <button type="submit" class="app-btn app-btn-primary" [disabled]="signupForm.touched && !signupForm.valid"
+              id="signUpSubmit">Sign Up
+      </button>
+    </div>
+  </form>
+</div>
