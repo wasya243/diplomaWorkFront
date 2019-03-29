@@ -1,0 +1,52 @@
+@import "variables";
+@import "shared-styles";
+
+.app-navigation-bar {
+  width: 15.25rem;
+  height: 12.63rem;
+  border-bottom: solid .125rem $app-light-grey;
+  background-color: #ffffff;
+  padding: 1.86rem;
+  position: relative;
+
+  .header {
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    color: $app-almost-black;
+    margin-bottom: 1.250rem;
+  }
+
+  .label {
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    color: $app-almost-black;
+    margin-bottom: 1.86em;
+    z-index: 1;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.selected {
+  box-shadow: inset 6px 0 0 0 $app-mario-gold;
+}
+
+.yellow-cloud {
+  min-width: 13.36rem;
+  min-height: 2.25rem;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  background-color: $app-mario-gold;
+  position: absolute;
+  top: 3.93rem;
+  left: 0;
+}

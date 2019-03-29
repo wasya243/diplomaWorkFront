@@ -1,0 +1,7 @@
+<a class="app-navigation-bar d-flex flex-column" [ngClass]="{selected: isSelected}"
+   [routerLink]="navigationBarConfig.routeNavigateTo">
+  <div class="yellow-cloud" *ngIf="isSelected"></div>
+  <div class="header">{{navigationBarConfig.headerName}}</div>
+  <div class="label">{{navigationBarConfig.labelName}}</div>
+  <button class="app-btn app-btn-primary" (click)="onAdd()">{{navigationBarConfig.buttonName}}</button>
+</a>
