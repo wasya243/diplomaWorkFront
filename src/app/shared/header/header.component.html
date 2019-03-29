@@ -1,0 +1,10 @@
+<div class="app-top-bar d-flex align-items-center flex-row-reverse">
+  <div class="d-flex flex-row align-items-baseline">
+    <div class="firstname-lastname">
+      <span>{{userData.firstName}}</span>&nbsp;<span>{{userData.lastName}}</span>
+    </div>
+    <div class="logout-icon">
+      <fa-icon [icon]="signOutIcon" (click)="logout()"></fa-icon>
+    </div>
+  </div>
+</div>

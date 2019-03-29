@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-dispatcher-container',
@@ -10,20 +7,10 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class DispatcherContainerComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  logout(): void {
-    this.authService.logout()
-      .subscribe(resp => {
-          this.router.navigate([ 'login' ]);
-        },
-        error => {
-          console.error(error);
-        });
   }
 
 }

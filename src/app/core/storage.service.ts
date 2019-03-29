@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CoreModule } from './core.module';
 
+import IUserData = diploma.IUserData;
+
 @Injectable({
   providedIn: CoreModule
 })
@@ -47,7 +49,7 @@ export class StorageService {
     return this.remove('user');
   }
 
-  getUserData() {
+  getUserData(): IUserData {
     return this.get('user', true);
   }
 
