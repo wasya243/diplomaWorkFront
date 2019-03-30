@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { IGridSortableColumnData } from '../grid.module';
 
 @Component({
-  selector: 'brz-grid-head-cell',
+  selector: 'app-grid-head-cell',
   templateUrl: './grid-head-cell.component.html',
   styleUrls: [ './grid-head-cell.component.scss' ],
 })

@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { FacultiesComponent } from './faculties/faculties.component';
 import { AdminContainerComponent } from './admin-container/admin-container.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { UsersService } from './users/users.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { AdminRoutingModule } from './admin-routing.module';
     CoreModule
   ],
   declarations: [ UsersComponent, FacultiesComponent, AdminContainerComponent ],
-  providers: [],
+  providers: [ UsersService ],
   exports: []
 })
 export class AdminModule {
