@@ -1,3 +1,4 @@
+// TODO: use inheritance & composition to avoid duplication
 declare namespace diploma {
   interface IUserData {
     userInfo: Partial<IUser>;
@@ -10,6 +11,12 @@ declare namespace diploma {
     lastName: string;
     id: string;
     role: string;
+  }
+
+  interface IUpdateUser {
+    email: string;
+    firstName: string;
+    lastName: string;
   }
 
   interface ILogInCredentials {

@@ -6,6 +6,7 @@ import { ValidationService } from '../../../core/validation.service';
 import { UsersService } from '../users.service';
 
 import IUser = diploma.IUser;
+import IUpdateUser = diploma.IUpdateUser;
 
 @Component({
   selector: 'app-update-user-modal',
@@ -24,7 +25,7 @@ export class UpdateUserModalComponent implements OnInit {
     private userService: UsersService
   ) {
     this.userForm = this.fb.group({
-      email: [ { value: '', disabled: true }, [ Validators.required, ValidationService.emailValidator ] ],
+      email: [ '', [ Validators.required, ValidationService.emailValidator ] ],
       firstName: [ '', [ Validators.required ] ],
       lastName: [ '', [ Validators.required ] ]
     });
@@ -39,16 +40,13 @@ export class UpdateUserModalComponent implements OnInit {
   }
 
   save(): void {
-    console.log(this.data);
-    this.modalService.apply(this.data);
-    // TODO: return when functionality is ready
-    // this.userService.updateUser(this.data.id, this.userForm.value)
-    //   .subscribe(updatedCmsUser => {
-    //       this.modalService.apply(updatedCmsUser);
-    //     },
-    //     error => {
-    //       console.error(error);
-    //     });
+    this.userService.updateUser(this.data.id, this.userForm.value)
+      .subscribe((updatedUser: IUser) => {
+          this.modalService.apply(updatedUser);
+        },
+        error => {
+          console.error(error);
+        });
   }
 
 }
