@@ -7,13 +7,15 @@ import { FormValidationComponent } from './form-validation/form-validation.compo
 import { HeaderComponent } from './header/header.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { GridModule } from './grid/grid.module';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FontAwesomeModule,
     GridModule,
-    RouterModule
+    RouterModule,
+    ModalModule
   ],
   declarations: [
     FormValidationComponent,
@@ -25,7 +27,8 @@ import { GridModule } from './grid/grid.module';
     GridModule,
     NavigationBarComponent,
     HeaderComponent,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ModalModule
   ]
 })
 export class SharedModule {

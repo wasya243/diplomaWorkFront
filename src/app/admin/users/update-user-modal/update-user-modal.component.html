@@ -1,0 +1,49 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Edit user</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="userForm">
+      <app-form-validation [validationElement]="userForm.get('email')" [offset]="3">
+        <div class="row">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="email" class="app-login-input-label">Email</label>
+          </div>
+          <div class="col-9">
+            <input type="email" class="app-form-control app-error-border" placeholder="Email"
+                   id="email"
+                   formControlName="email">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="userForm.get('firstName')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="firstName" class="app-login-input-label">First name</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="First name"
+                   id="firstName"
+                   formControlName="firstName">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="userForm.get('lastName')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="lastName" class="app-login-input-label">Last name</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Last Name"
+                   id="lastName"
+                   formControlName="lastName">
+          </div>
+        </div>
+      </app-form-validation>
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!userForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

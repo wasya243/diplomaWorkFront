@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { faPencilAlt, faTrash, faUndo } from '@fortawesome/free-solid-svg-icons';
 
+import { ModalService } from '../../shared/modal/modal.service';
 import { UsersService } from './users.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
+import { UpdateUserModalComponent } from './update-user-modal/update-user-modal.component';
 
 import IUser = diploma.IUser;
 
@@ -23,7 +25,7 @@ export class UsersComponent implements OnInit {
   trashIcon = faTrash;
   undoIcon = faUndo;
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService, private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -47,15 +49,16 @@ export class UsersComponent implements OnInit {
 
   onEditUser(clickedRow: IUser): void {
     console.log(clickedRow);
-    // TODO: return back when respective functionality is implemented on both front & back
-    // this.modalService.open(UpdateUserModalComponent, { size: 'sm' }, clickedRow)
-    //   .then(data => {
-    //     this.users.items.map(
-    //       (cmsUser: ICreatedUserResponse) => {
-    //         return cmsUser._id === (<ICreatedUserResponse>data)._id && Object.assign(cmsUser, data);
-    //       });
-    //   })
-    //   .catch(error => {});
+    this.modalService.open(UpdateUserModalComponent, { size: 'sm' }, clickedRow)
+      .then(data => {
+        this.users.items.map(
+          (user: IUser) => {
+            return user.id === (data as IUser).id && Object.assign(user, data);
+          });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   onDeleteUser(clickedRow: IUser): void {

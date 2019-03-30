@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UsersComponent } from './users/users.component';
 import { FacultiesComponent } from './faculties/faculties.component';
 import { AdminContainerComponent } from './admin-container/admin-container.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersService } from './users/users.service';
+import { UpdateUserModalComponent } from './users/update-user-modal/update-user-modal.component';
 
 @NgModule({
   imports: [
@@ -16,9 +18,12 @@ import { UsersService } from './users/users.service';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     CoreModule
   ],
-  declarations: [ UsersComponent, FacultiesComponent, AdminContainerComponent ],
+  declarations: [ UsersComponent, FacultiesComponent, AdminContainerComponent, UpdateUserModalComponent ],
+  entryComponents: [ UpdateUserModalComponent ],
   providers: [ UsersService ],
   exports: []
 })
