@@ -1,0 +1,17 @@
+<div class="grid__head-cell" (click)="click()" [ngClass]="{'grid__head-cell_sortable': sortName}">
+  <div class="title-wrapper">
+    <ng-content></ng-content>
+  </div>
+  <span class="grid__sort-icon"
+        [ngClass]="{
+          'grid__sort-icon_rotated': sortConfig?.sortDirection === 'desc',
+          'grid__sort-icon_visible': sortConfig?.sortDirection
+        }"
+        *ngIf="sortConfig?.sortDirection">
+    <fa-icon [icon]="sortDown"></fa-icon>
+  </span>
+  <span class="grid__sort-icon grid__sort-icon_visible"
+        *ngIf="sortName && !sortConfig?.sortDirection">
+    <fa-icon [icon]="sort"></fa-icon>
+  </span>
+</div>

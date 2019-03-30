@@ -1,0 +1,44 @@
+:host {
+  flex: 1 1;
+  font-size: .75rem;
+  font-weight: 500;
+  user-select: none;
+}
+
+.grid__head-cell {
+  padding: 20px 0 20px;
+  cursor: default;
+  display: flex;
+
+  &_sortable {
+    cursor: pointer;
+
+    &:hover {
+      opacity: .75;
+    }
+  }
+}
+
+.title-wrapper {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.grid__sort-icon {
+  display: inline-block;
+  margin-left: 10px;
+  color: #006bfd;
+  font-size: .8rem;
+  transition: transform .5s;
+  transform: scaleY(0);
+  flex: 0 0 10px;
+
+  &_visible {
+    transform: scaleY(1);
+  }
+
+  &_rotated {
+    transform: scaleY(-1);
+  }
+}

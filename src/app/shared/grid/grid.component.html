@@ -1,0 +1,16 @@
+<div class="grid">
+  <div class="grid__head">
+    <ng-container *ngTemplateOutlet="gridHeadTemplate; context: gridContext"></ng-container>
+  </div>
+  <div class="grid__body">
+    <div class="grid__row" *ngFor="let item of items" (click)="onRowClicked(item)">
+      <div class="grid__row-cells-wrapper">
+        <ng-container *ngTemplateOutlet="gridRowTemplate; context: {item: item}"></ng-container>
+      </div>
+      <div class="grid__row-collapsible-wrapper"
+           [ngClass]="{'grid__row-collapsible-wrapper_expanded': item.isExpanded}">
+        <ng-container *ngTemplateOutlet="gridRowCollapsibleTemplate; context: {item: item}"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
