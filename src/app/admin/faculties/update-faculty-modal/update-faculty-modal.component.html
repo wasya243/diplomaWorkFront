@@ -1,0 +1,73 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Edit Faculty</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="facultyForm">
+      <app-form-validation [validationElement]="facultyForm.get('name')" [offset]="3">
+        <div class="row">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="name" class="app-login-input-label">Name</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Name"
+                   id="name"
+                   formControlName="name">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="facultyForm.get('director')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="director" class="app-login-input-label">Director</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Director"
+                   id="director"
+                   formControlName="director">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="facultyForm.get('address')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="address" class="app-login-input-label">Address</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Address"
+                   id="address"
+                   formControlName="address">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="facultyForm.get('phoneNumber')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="phone" class="app-login-input-label">Phone number</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Phone number"
+                   id="phone"
+                   formControlName="phoneNumber">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="facultyForm.get('website')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="phone" class="app-login-input-label">Role</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Website"
+                   id="website"
+                   formControlName="website">
+          </div>
+        </div>
+      </app-form-validation>
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!facultyForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

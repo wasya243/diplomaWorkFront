@@ -1,3 +1,4 @@
+// TODO: use composition & inheritance to avoid duplication
 declare namespace diploma {
   interface IFaculty {
     name: string;
@@ -6,5 +7,13 @@ declare namespace diploma {
     phoneNumber: string;
     website: string;
     id: number;
+  }
+
+  interface IUpdateFaculty {
+    name: string;
+    director: string;
+    address: string;
+    phoneNumber: string;
+    website: string;
   }
 }

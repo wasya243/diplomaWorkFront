@@ -15,6 +15,7 @@ import { UpdateUserModalComponent } from './users/update-user-modal/update-user-
 import { DeleteUserModalComponent } from './users/delete-user-modal/delete-user-modal.component';
 import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-password-modal.component';
 import { DeleteFacultyModalComponent } from './faculties/delete-faculty-modal/delete-faculty-modal.component';
+import { UpdateFacultyModalComponent } from './faculties/update-faculty-modal/update-faculty-modal.component';
 
 @NgModule({
   imports: [
@@ -33,12 +34,14 @@ import { DeleteFacultyModalComponent } from './faculties/delete-faculty-modal/de
     UpdateUserModalComponent,
     DeleteUserModalComponent,
     ResetPasswordModalComponent,
-    DeleteFacultyModalComponent ],
+    DeleteFacultyModalComponent,
+    UpdateFacultyModalComponent ],
   entryComponents: [
     UpdateUserModalComponent,
     DeleteUserModalComponent,
     ResetPasswordModalComponent,
-    DeleteFacultyModalComponent
+    DeleteFacultyModalComponent,
+    UpdateFacultyModalComponent
   ],
   providers: [ UsersService, FacultiesService ],
   exports: []

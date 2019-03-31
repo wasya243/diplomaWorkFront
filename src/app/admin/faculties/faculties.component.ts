@@ -5,6 +5,7 @@ import { FacultiesService } from './faculties.service';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { DeleteFacultyModalComponent } from './delete-faculty-modal/delete-faculty-modal.component';
+import { UpdateFacultyModalComponent } from './update-faculty-modal/update-faculty-modal.component';
 
 import IFaculty = diploma.IFaculty;
 
@@ -47,17 +48,16 @@ export class FacultiesComponent implements OnInit {
   }
 
   onEditFaculty(clickedRow: IFaculty): void {
-    console.log(clickedRow);
-    // this.modalService.open(UpdateUserModalComponent, { size: 'sm' }, clickedRow)
-    //   .then(data => {
-    //     this.users.items.map(
-    //       (user: IUser) => {
-    //         return user.id === (data as IUser).id && Object.assign(user, data);
-    //       });
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   });
+    this.modalService.open(UpdateFacultyModalComponent, { size: 'sm' }, clickedRow)
+      .then(data => {
+        this.faculties.items.map(
+          (faculty: IFaculty) => {
+            return faculty.id === (data as IFaculty).id && Object.assign(faculty, data);
+          });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   onRemoveFaculty(clickedRow: IFaculty): void {
