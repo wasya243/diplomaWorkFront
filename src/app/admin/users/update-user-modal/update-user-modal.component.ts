@@ -6,7 +6,6 @@ import { ValidationService } from '../../../core/validation.service';
 import { UsersService } from '../users.service';
 
 import IUser = diploma.IUser;
-import IUpdateUser = diploma.IUpdateUser;
 
 @Component({
   selector: 'app-update-user-modal',
@@ -24,15 +23,15 @@ export class UpdateUserModalComponent implements OnInit {
     private modalService: ModalService,
     private userService: UsersService
   ) {
-    this.userForm = this.fb.group({
-      email: [ '', [ Validators.required, ValidationService.emailValidator ] ],
-      firstName: [ '', [ Validators.required ] ],
-      lastName: [ '', [ Validators.required ] ]
-    });
   }
 
   ngOnInit() {
-    this.userForm.patchValue(this.data);
+    this.userForm = this.fb.group({
+      email: [ this.data.email, [ Validators.required, ValidationService.emailValidator ] ],
+      firstName: [ this.data.firstName, [ Validators.required ] ],
+      lastName: [ this.data.lastName, [ Validators.required ] ],
+      role: [ { value: this.data.role, disabled: true }, [ Validators.required ] ]
+    });
   }
 
   cancel(): void {

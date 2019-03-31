@@ -40,6 +40,18 @@
           </div>
         </div>
       </app-form-validation>
+      <app-form-validation [validationElement]="userForm.get('role')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="role" class="app-login-input-label">Role</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Role"
+                   id="role"
+                   formControlName="role">
+          </div>
+        </div>
+      </app-form-validation>
       <div class="d-flex justify-content-between custom-footer">
         <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
         <button (click)="save()" class="btn btn-primary" [disabled]="!userForm.valid">Save</button>
