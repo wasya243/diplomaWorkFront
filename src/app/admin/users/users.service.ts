@@ -23,4 +23,8 @@ export class UsersService {
   removeUser(id: string): Observable<{}> {
     return this.http.delete(`/users/${id}`);
   }
+
+  resetPassword(id: string, newPassword: string): Observable<{}> {
+    return this.http.put(`/users/${id}/reset-password`, { password: newPassword });
+  }
 }

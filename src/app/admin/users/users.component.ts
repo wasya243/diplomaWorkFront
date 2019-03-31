@@ -6,6 +6,7 @@ import { UsersService } from './users.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { DeleteUserModalComponent } from './delete-user-modal/delete-user-modal.component';
 import { UpdateUserModalComponent } from './update-user-modal/update-user-modal.component';
+import { ResetPasswordModalComponent } from './reset-password-modal/reset-password-modal.component';
 
 import IUser = diploma.IUser;
 
@@ -72,13 +73,12 @@ export class UsersComponent implements OnInit {
   }
 
   onResetPassword(clickedRow: IUser): void {
-    console.log(clickedRow);
-    // TODO: return back when respective functionality is implemented on both front & back
-    // this.modalService.open(ResetPasswordModalComponent, { size: 'sm' }, clickedRow)
-    //   .then(data => {
-    //     // if it is needed somehow handle this action
-    //   })
-    //   .catch(error => {});
+    this.modalService.open(ResetPasswordModalComponent, { size: 'sm' }, clickedRow)
+      .then(data => {
+        // if it is needed somehow handle this action
+      })
+      .catch(error => {
+      });
   }
 
 }

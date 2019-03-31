@@ -12,6 +12,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UsersService } from './users/users.service';
 import { UpdateUserModalComponent } from './users/update-user-modal/update-user-modal.component';
 import { DeleteUserModalComponent } from './users/delete-user-modal/delete-user-modal.component';
+import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-password-modal.component';
 
 @NgModule({
   imports: [
@@ -23,8 +24,8 @@ import { DeleteUserModalComponent } from './users/delete-user-modal/delete-user-
     ReactiveFormsModule,
     CoreModule
   ],
-  declarations: [ UsersComponent, FacultiesComponent, AdminContainerComponent, UpdateUserModalComponent, DeleteUserModalComponent ],
-  entryComponents: [ UpdateUserModalComponent, DeleteUserModalComponent ],
+  declarations: [ UsersComponent, FacultiesComponent, AdminContainerComponent, UpdateUserModalComponent, DeleteUserModalComponent, ResetPasswordModalComponent ],
+  entryComponents: [ UpdateUserModalComponent, DeleteUserModalComponent, ResetPasswordModalComponent ],
   providers: [ UsersService ],
   exports: []
 })
