@@ -14,6 +14,7 @@ import { FacultiesService } from './faculties/faculties.service';
 import { UpdateUserModalComponent } from './users/update-user-modal/update-user-modal.component';
 import { DeleteUserModalComponent } from './users/delete-user-modal/delete-user-modal.component';
 import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-password-modal.component';
+import { DeleteFacultyModalComponent } from './faculties/delete-faculty-modal/delete-faculty-modal.component';
 
 @NgModule({
   imports: [
@@ -31,8 +32,14 @@ import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-
     AdminContainerComponent,
     UpdateUserModalComponent,
     DeleteUserModalComponent,
-    ResetPasswordModalComponent ],
-  entryComponents: [ UpdateUserModalComponent, DeleteUserModalComponent, ResetPasswordModalComponent ],
+    ResetPasswordModalComponent,
+    DeleteFacultyModalComponent ],
+  entryComponents: [
+    UpdateUserModalComponent,
+    DeleteUserModalComponent,
+    ResetPasswordModalComponent,
+    DeleteFacultyModalComponent
+  ],
   providers: [ UsersService, FacultiesService ],
   exports: []
 })

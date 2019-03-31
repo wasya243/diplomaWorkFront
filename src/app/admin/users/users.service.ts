@@ -16,15 +16,15 @@ export class UsersService {
     return this.http.get<IUser[]>(`/users`);
   }
 
-  updateUser(id: string, userData: IUpdateUser): Observable<IUser> {
+  updateUser(id: number, userData: IUpdateUser): Observable<IUser> {
     return this.http.put<IUser>(`/users/${id}`, userData);
   }
 
-  removeUser(id: string): Observable<{}> {
+  removeUser(id: number): Observable<{}> {
     return this.http.delete(`/users/${id}`);
   }
 
-  resetPassword(id: string, newPassword: string): Observable<{}> {
+  resetPassword(id: number, newPassword: string): Observable<{}> {
     return this.http.put(`/users/${id}/reset-password`, { password: newPassword });
   }
 }

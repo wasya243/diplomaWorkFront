@@ -9,7 +9,7 @@ declare namespace diploma {
     email: string;
     firstName: string;
     lastName: string;
-    id: string;
+    id: number;
     role: string;
   }
 

@@ -4,6 +4,7 @@ import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FacultiesService } from './faculties.service';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
+import { DeleteFacultyModalComponent } from './delete-faculty-modal/delete-faculty-modal.component';
 
 import IFaculty = diploma.IFaculty;
 
@@ -61,12 +62,12 @@ export class FacultiesComponent implements OnInit {
 
   onRemoveFaculty(clickedRow: IFaculty): void {
     console.log(clickedRow);
-    // this.modalService.open(DeleteUserModalComponent, { size: 'sm' }, clickedRow)
-    //   .then((id) => {
-    //     this.users.items = this.users.items.filter((user: IUser) => user.id !== id);
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   });
+    this.modalService.open(DeleteFacultyModalComponent, { size: 'sm' }, clickedRow)
+      .then((id) => {
+        this.faculties.items = this.faculties.items.filter((faculty: IFaculty) => faculty.id !== id);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 }

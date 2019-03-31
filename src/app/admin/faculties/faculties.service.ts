@@ -11,7 +11,10 @@ export class FacultiesService {
   }
 
   getFaculties(): Observable<Array<IFaculty>> {
-
     return this.http.get<IFaculty[]>(`/faculties`);
+  }
+
+  removeFaculty(id: number): Observable<{}> {
+    return this.http.delete(`/faculties/${id}`);
   }
 }
