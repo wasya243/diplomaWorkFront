@@ -10,6 +10,7 @@ import { FacultiesComponent } from './faculties/faculties.component';
 import { AdminContainerComponent } from './admin-container/admin-container.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersService } from './users/users.service';
+import { FacultiesService } from './faculties/faculties.service';
 import { UpdateUserModalComponent } from './users/update-user-modal/update-user-modal.component';
 import { DeleteUserModalComponent } from './users/delete-user-modal/delete-user-modal.component';
 import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-password-modal.component';
@@ -24,9 +25,15 @@ import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-
     ReactiveFormsModule,
     CoreModule
   ],
-  declarations: [ UsersComponent, FacultiesComponent, AdminContainerComponent, UpdateUserModalComponent, DeleteUserModalComponent, ResetPasswordModalComponent ],
+  declarations: [
+    UsersComponent,
+    FacultiesComponent,
+    AdminContainerComponent,
+    UpdateUserModalComponent,
+    DeleteUserModalComponent,
+    ResetPasswordModalComponent ],
   entryComponents: [ UpdateUserModalComponent, DeleteUserModalComponent, ResetPasswordModalComponent ],
-  providers: [ UsersService ],
+  providers: [ UsersService, FacultiesService ],
   exports: []
 })
 export class AdminModule {

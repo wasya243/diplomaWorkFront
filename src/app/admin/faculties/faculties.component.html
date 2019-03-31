@@ -1,3 +1,35 @@
-<p>
-  faculties works!
-</p>
+<app-grid
+  [items]="faculties.items"
+  [expandable]="false"
+  (onSortChange)="onSortChange($event)"
+>
+  <ng-template #gridHeadTemplate>
+    <div class="d-flex w-100">
+      <app-grid-head-cell class="col-3" sortName="name">Name</app-grid-head-cell>
+      <app-grid-head-cell class="col-3" sortName="director">Director</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="address">Address</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="phoneNumber">Phone</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="website">Website</app-grid-head-cell>
+      <app-grid-head-cell class=""></app-grid-head-cell>
+    </div>
+  </ng-template>
+  <ng-template #gridRowTemplate let-item="item">
+    <div class="d-flex w-100">
+      <app-grid-row-cell class="col-3">{{ item.name }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-3">{{ item.director }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.address }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.phoneNumber}}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.website}}</app-grid-row-cell>
+      <app-grid-row-cell class="d-flex justify-content-end">
+        <div class="d-flex">
+          <div class="edit-btn app-control-btn" (click)="onEditFaculty(item)">
+            <fa-icon [icon]="pencilAltIcon"></fa-icon>
+          </div>
+          <div class="remove-btn app-control-btn" (click)="onRemoveFaculty(item)">
+            <fa-icon [icon]="trashIcon"></fa-icon>
+          </div>
+        </div>
+      </app-grid-row-cell>
+    </div>
+  </ng-template>
+</app-grid>
