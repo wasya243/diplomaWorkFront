@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { AdminContainerComponent } from './admin-container/admin-container.component';
+import { ClassroomsComponent } from './classrooms/classrooms.component';
 import { FacultiesComponent } from './faculties/faculties.component';
 import { UsersComponent } from './users/users.component';
 import { MasterGuard } from '../auth/master-guard.service';
@@ -29,6 +30,10 @@ const superAdminRoutes: Routes = [
       {
         path: 'faculties',
         component: FacultiesComponent
+      },
+      {
+        path: 'classrooms',
+        component: ClassroomsComponent
       }
     ]
   }

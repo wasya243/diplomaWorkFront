@@ -11,11 +11,14 @@ import { AdminContainerComponent } from './admin-container/admin-container.compo
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersService } from './users/users.service';
 import { FacultiesService } from './faculties/faculties.service';
+import { ClassroomsService } from './classrooms/classrooms.service';
 import { UpdateUserModalComponent } from './users/update-user-modal/update-user-modal.component';
 import { DeleteUserModalComponent } from './users/delete-user-modal/delete-user-modal.component';
 import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-password-modal.component';
 import { DeleteFacultyModalComponent } from './faculties/delete-faculty-modal/delete-faculty-modal.component';
 import { UpdateFacultyModalComponent } from './faculties/update-faculty-modal/update-faculty-modal.component';
+import { ClassroomsComponent } from './classrooms/classrooms.component';
+import { DeleteClassroomModalComponent } from './classrooms/delete-classroom-modal/delete-classroom-modal.component';
 
 @NgModule({
   imports: [
@@ -35,15 +38,18 @@ import { UpdateFacultyModalComponent } from './faculties/update-faculty-modal/up
     DeleteUserModalComponent,
     ResetPasswordModalComponent,
     DeleteFacultyModalComponent,
-    UpdateFacultyModalComponent ],
+    UpdateFacultyModalComponent,
+    ClassroomsComponent,
+    DeleteClassroomModalComponent ],
   entryComponents: [
     UpdateUserModalComponent,
     DeleteUserModalComponent,
     ResetPasswordModalComponent,
     DeleteFacultyModalComponent,
-    UpdateFacultyModalComponent
+    UpdateFacultyModalComponent,
+    DeleteClassroomModalComponent
   ],
-  providers: [ UsersService, FacultiesService ],
+  providers: [ UsersService, FacultiesService, ClassroomsService ],
   exports: []
 })
 export class AdminModule {

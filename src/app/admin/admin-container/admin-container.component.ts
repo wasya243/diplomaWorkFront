@@ -19,6 +19,14 @@ const navigationConfigs: INavigationBarConfig[] = [
     routeName: 'users',
     routeNavigateTo: '../admin/users',
     modalToInvoke: 'createUserModal'
+  },
+  {
+    headerName: 'Classrooms',
+    labelName: 'Classroom list',
+    buttonName: 'Add classroom',
+    routeName: 'classrooms',
+    routeNavigateTo: '../admin/classrooms',
+    modalToInvoke: 'createClassroomModal'
   }
 ];
 
