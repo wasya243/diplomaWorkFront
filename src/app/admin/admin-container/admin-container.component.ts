@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router';
 
+import { FacultiesService } from '../faculties/faculties.service';
+
 import INavigationBarConfig = diploma.INavigationBarConfig;
 
 const navigationConfigs: INavigationBarConfig[] = [
@@ -41,7 +43,7 @@ export class AdminContainerComponent implements OnInit {
   navigationConfigs: INavigationBarConfig[] = navigationConfigs;
   currentRoute: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private facultiesService: FacultiesService) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = this.router.url.split('/')[ 2 ];
@@ -54,7 +56,17 @@ export class AdminContainerComponent implements OnInit {
 
   onAddItem(modalName: string): void {
     // TODO: implement modals
-    console.log(modalName);
+    switch (modalName) {
+      case 'createFacultyModal':
+        this.facultiesService.initFacultyCreation();
+        break;
+      case 'createClassroomModal':
+        console.log(modalName);
+        break;
+      case 'createUserModal':
+        console.log(modalName);
+        break;
+    }
   }
 
 }

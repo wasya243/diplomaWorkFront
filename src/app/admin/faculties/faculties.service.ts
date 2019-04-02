@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import IFaculty = diploma.IFaculty;
 import IUpdateFaculty = diploma.IUpdateFaculty;
 
 @Injectable()
 export class FacultiesService {
+
+  private initFacultyCreationSubject = new Subject<void>();
 
   constructor(private http: HttpClient) {
   }
@@ -21,5 +23,17 @@ export class FacultiesService {
 
   updateFaculty(id: number, facultyData: IUpdateFaculty): Observable<IFaculty> {
     return this.http.put<IFaculty>(`/faculties/${id}`, facultyData);
+  }
+
+  createFaculty(facultyData: IUpdateFaculty): Observable<IFaculty> {
+    return this.http.post<IFaculty>(`/faculties`, facultyData);
+  }
+
+  onInitFacultyCreationSubject(): Subject<void> {
+    return this.initFacultyCreationSubject;
+  }
+
+  initFacultyCreation(): void {
+    this.initFacultyCreationSubject.next();
   }
 }

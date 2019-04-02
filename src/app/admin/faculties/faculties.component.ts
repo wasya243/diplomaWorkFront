@@ -6,6 +6,7 @@ import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { DeleteFacultyModalComponent } from './delete-faculty-modal/delete-faculty-modal.component';
 import { UpdateFacultyModalComponent } from './update-faculty-modal/update-faculty-modal.component';
+import { CreateFacultyModalComponent } from './create-faculty-modal/create-faculty-modal.component';
 
 import IFaculty = diploma.IFaculty;
 
@@ -29,13 +30,14 @@ export class FacultiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.facultiesService.getFaculties()
-      .subscribe(data => {
-        this.faculties.items = data;
-      }, error => {
-        // TODO: maybe log errors?
-        console.error(error);
-      });
+    this.getFaculties();
+    this.facultiesService.onInitFacultyCreationSubject().subscribe(async () => {
+      this.modalService.open(CreateFacultyModalComponent, { size: 'lg' })
+        .then(() => {
+          this.getFaculties();
+        })
+        .catch(error => console.error(error));
+    });
   }
 
   onSortChange(sortData: IGridSortableColumnData) {
@@ -67,6 +69,16 @@ export class FacultiesComponent implements OnInit {
         this.faculties.items = this.faculties.items.filter((faculty: IFaculty) => faculty.id !== id);
       })
       .catch(error => {
+        console.error(error);
+      });
+  }
+
+  private getFaculties(): void {
+    this.facultiesService.getFaculties()
+      .subscribe(data => {
+        this.faculties.items = data;
+      }, error => {
+        // TODO: maybe log errors?
         console.error(error);
       });
   }
