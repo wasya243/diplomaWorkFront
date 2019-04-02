@@ -7,6 +7,8 @@ declare namespace diploma {
     phoneNumber: string;
     website: string;
     id: number;
+    // amount of classrooms
+    classrooms: number;
   }
 
   interface IUpdateFaculty {
