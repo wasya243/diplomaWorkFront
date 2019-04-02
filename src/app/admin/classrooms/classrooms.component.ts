@@ -6,6 +6,7 @@ import { DeleteClassroomModalComponent } from './delete-classroom-modal/delete-c
 import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { UpdateClassroomModalComponent } from './update-classroom-modal/update-classroom-modal.component';
+import { CreateClassroomModalComponent } from './create-classroom-modal/create-classroom-modal.component';
 
 import IClassroom = diploma.IClassroom;
 
@@ -29,13 +30,14 @@ export class ClassroomsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.classroomsService.getClassrooms()
-      .subscribe(data => {
-        this.classrooms.items = data;
-      }, error => {
-        // TODO: maybe log errors?
-        console.error(error);
-      });
+    this.getClassrooms();
+    this.classroomsService.onInitClassroomCreationSubject().subscribe(async () => {
+      this.modalService.open(CreateClassroomModalComponent, { size: 'lg' })
+        .then(() => {
+          this.getClassrooms();
+        })
+        .catch(error => console.error(error));
+    });
   }
 
   onSortChange(sortData: IGridSortableColumnData) {
@@ -66,6 +68,16 @@ export class ClassroomsComponent implements OnInit {
         this.classrooms.items = this.classrooms.items.filter((classroom: IClassroom) => classroom.id !== id);
       })
       .catch(error => {
+        console.error(error);
+      });
+  }
+
+  private getClassrooms(): void {
+    this.classroomsService.getClassrooms()
+      .subscribe(data => {
+        this.classrooms.items = data;
+      }, error => {
+        // TODO: maybe log errors?
         console.error(error);
       });
   }

@@ -15,4 +15,10 @@ declare namespace diploma {
     faculty: number;
     number: string;
   }
+
+  interface ICreateClassroom {
+    amountOfSeats: number;
+    facultyId: number;
+    number: string;
+  }
 }

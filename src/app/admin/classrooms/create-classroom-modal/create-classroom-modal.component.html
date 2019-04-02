@@ -1,0 +1,57 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Edit Classroom</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="classroomForm">
+      <app-form-validation [validationElement]="classroomForm.get('number')" [offset]="3">
+        <div class="row">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="number" class="app-login-input-label">Number</label>
+          </div>
+          <div class="col-9">
+            <input type="number" class="app-form-control app-error-border" placeholder="Number"
+                   id="number"
+                   formControlName="number">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="classroomForm.get('amountOfSeats')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="amountOfSeats" class="app-login-input-label">Amount of Seats</label>
+          </div>
+          <div class="col-9">
+            <input type="number" class="app-form-control app-error-border" placeholder="Amount of Seats"
+                   id="amountOfSeats"
+                   formControlName="amountOfSeats">
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="classroomForm.get('facultyId')" [offset]="3">
+        <div class="row mt-20px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label class="app-login-input-label w-100">Faculty</label>
+          </div>
+          <div class="col-9">
+            <select class="app-form-control" formControlName="facultyId">
+              <option
+                class="label"
+                *ngFor="let faculty of faculties"
+                [ngValue]="faculty.id"
+                >
+                {{faculty.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!classroomForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
