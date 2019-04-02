@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import IClassroom = diploma.IClassroom;
+import IUpdateClassroom = diploma.IUpdateClassroom;
 
 @Injectable()
 export class ClassroomsService {
@@ -16,5 +17,9 @@ export class ClassroomsService {
 
   removeClassroom(id: number): Observable<{}> {
     return this.http.delete(`/classrooms/${id}`);
+  }
+
+  updateClassroom(id: number, classroomData: IUpdateClassroom): Observable<IClassroom> {
+    return this.http.put<IClassroom>(`/classrooms/${id}`, classroomData);
   }
 }

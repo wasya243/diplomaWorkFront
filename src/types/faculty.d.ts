@@ -16,4 +16,9 @@ declare namespace diploma {
     phoneNumber: string;
     website: string;
   }
+
+  interface IProcessedFaculty {
+    id: number;
+    name: string;
+  }
 }

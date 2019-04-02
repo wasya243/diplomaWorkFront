@@ -20,6 +20,7 @@ import { UpdateFacultyModalComponent } from './faculties/update-faculty-modal/up
 import { ClassroomsComponent } from './classrooms/classrooms.component';
 import { DeleteClassroomModalComponent } from './classrooms/delete-classroom-modal/delete-classroom-modal.component';
 import { CreateFacultyModalComponent } from './faculties/create-faculty-modal/create-faculty-modal.component';
+import { UpdateClassroomModalComponent } from './classrooms/update-classroom-modal/update-classroom-modal.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { CreateFacultyModalComponent } from './faculties/create-faculty-modal/cr
     UpdateFacultyModalComponent,
     ClassroomsComponent,
     DeleteClassroomModalComponent,
-    CreateFacultyModalComponent ],
+    CreateFacultyModalComponent,
+    UpdateClassroomModalComponent ],
   entryComponents: [
     UpdateUserModalComponent,
     DeleteUserModalComponent,
@@ -50,7 +52,8 @@ import { CreateFacultyModalComponent } from './faculties/create-faculty-modal/cr
     DeleteFacultyModalComponent,
     UpdateFacultyModalComponent,
     DeleteClassroomModalComponent,
-    CreateFacultyModalComponent
+    CreateFacultyModalComponent,
+    UpdateClassroomModalComponent
   ],
   providers: [ UsersService, FacultiesService, ClassroomsService ],
   exports: []

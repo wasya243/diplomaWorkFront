@@ -5,6 +5,7 @@ import { ClassroomsService } from './classrooms.service';
 import { DeleteClassroomModalComponent } from './delete-classroom-modal/delete-classroom-modal.component';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
+import { UpdateClassroomModalComponent } from './update-classroom-modal/update-classroom-modal.component';
 
 import IClassroom = diploma.IClassroom;
 
@@ -47,17 +48,16 @@ export class ClassroomsComponent implements OnInit {
   }
 
   onEditClassroom(clickedRow: IClassroom): void {
-    console.log(clickedRow);
-    // this.modalService.open(UpdateFacultyModalComponent, { size: 'sm' }, clickedRow)
-    //   .then(data => {
-    //     this.faculties.items.map(
-    //       (faculty: IFaculty) => {
-    //         return faculty.id === (data as IFaculty).id && Object.assign(faculty, data);
-    //       });
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   });
+    this.modalService.open(UpdateClassroomModalComponent, { size: 'sm' }, clickedRow)
+      .then(data => {
+        this.classrooms.items.map(
+          (classroom: IClassroom) => {
+            return classroom.id === (data as IClassroom).id && Object.assign(classroom, data);
+          });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   onRemoveClassroom(clickedRow: IClassroom): void {
