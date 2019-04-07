@@ -41,7 +41,6 @@ const navigationConfigs: INavigationBarConfig[] = [
   }
 ];
 
-
 @Component({
   selector: 'app-admin-container',
   templateUrl: './admin-container.component.html',
@@ -68,7 +67,7 @@ export class AdminContainerComponent implements OnInit {
   }
 
   onAddItem(modalName: string): void {
-    // TODO: implement modals
+    // TODO: implement remaining modals
     switch (modalName) {
       case 'createFacultyModal':
         this.facultiesService.initFacultyCreation();

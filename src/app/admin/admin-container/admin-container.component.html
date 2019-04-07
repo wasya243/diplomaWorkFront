@@ -1,13 +1,13 @@
 <div class="page-container">
   <app-header></app-header>
   <div class="d-flex">
-      <div class="d-flex flex-column navigation-bar">
-        <div *ngFor="let config of navigationConfigs">
-          <app-navigation-bar
-            [navigationBarConfig]="config"
-            [isSelected]="currentRoute === config.routeName"
-            (addItem)="onAddItem($event)"
-          ></app-navigation-bar>
+    <div class="d-flex flex-column navigation-bar">
+      <div *ngFor="let config of navigationConfigs">
+        <app-navigation-bar
+          [navigationBarConfig]="config"
+          [isSelected]="currentRoute === config.routeName"
+          (addItem)="onAddItem($event)"
+        ></app-navigation-bar>
       </div>
     </div>
     <div class="wrapper d-flex">

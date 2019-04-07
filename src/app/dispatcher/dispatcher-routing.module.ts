@@ -6,6 +6,7 @@ import { DispatcherContainerComponent } from './dispatcher-container/dispatcher-
 import { MasterGuard } from '../auth/master-guard.service';
 import { AuthService } from '../auth/auth.service';
 import { AssignClassesComponent } from './assign-classes/assign-classes.component';
+import { RequestsComponent } from './requests/requests.component';
 
 const dispatcherRoutes: Routes = [
   {
@@ -20,6 +21,10 @@ const dispatcherRoutes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'assign-classes'
+      },
+      {
+        path: 'requests',
+        component: RequestsComponent
       },
       {
         path: 'assign-classes',
