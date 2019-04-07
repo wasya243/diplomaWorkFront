@@ -4,6 +4,7 @@ import { faSearch, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { RegistrationRequestsService } from './registration-requests.service';
+import { PermitRegistrationRequestComponent } from './permit-registration-request/permit-registration-request.component';
 import { ReviewRegistrationRequestModalComponent } from './review-registration-request-modal/review-registration-request-modal.component';
 
 import IRegistrationRequest = diploma.IRegistrationRequest;
@@ -50,7 +51,12 @@ export class RegistrationRequestsComponent implements OnInit {
   }
 
   onPermit(clickedRow: IRegistrationRequest) {
-    console.log(clickedRow);
+    this.modalService.open(PermitRegistrationRequestComponent, { size: 'sm' }, clickedRow)
+      .then(requestId => {
+        this.registrationRequests.items = this.registrationRequests.items.filter(item => item.id !== requestId);
+      }).catch(error => {
+      console.error(error);
+    });
   }
 
   onReview(clickedRow: IRegistrationRequest) {

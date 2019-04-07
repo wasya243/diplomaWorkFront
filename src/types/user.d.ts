@@ -39,4 +39,13 @@ declare namespace diploma {
     faculty: string;
     id: number;
   }
+
+  interface IPermittedRegistrationRequest {
+    email: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    id: number;
+    isPermitted: boolean;
+  }
 }

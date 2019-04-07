@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Permit Registration Request</h4>
+</div>
+<div class="modal-body">
+  <p class="warning-wrapper">Are you sure you want to permit access to the system for this user?</p>
+  <p class="email-wrapper">{{data.email}}</p>
+  <div class="d-flex justify-content-between custom-footer">
+    <button (click)="cancel()" class="btn btn-outline-secondary">No</button>
+    <button (click)="save()" class="btn btn-primary">Yes</button>
+  </div>
+</div>

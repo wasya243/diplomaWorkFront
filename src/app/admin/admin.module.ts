@@ -25,6 +25,7 @@ import { UpdateClassroomModalComponent } from './classrooms/update-classroom-mod
 import { CreateClassroomModalComponent } from './classrooms/create-classroom-modal/create-classroom-modal.component';
 import { RegistrationRequestsComponent } from './registration-requests/registration-requests.component';
 import { ReviewRegistrationRequestModalComponent } from './registration-requests/review-registration-request-modal/review-registration-request-modal.component';
+import { PermitRegistrationRequestComponent } from './registration-requests/permit-registration-request/permit-registration-request.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { ReviewRegistrationRequestModalComponent } from './registration-requests
     UpdateClassroomModalComponent,
     CreateClassroomModalComponent,
     RegistrationRequestsComponent,
-    ReviewRegistrationRequestModalComponent ],
+    ReviewRegistrationRequestModalComponent,
+    PermitRegistrationRequestComponent ],
   entryComponents: [
     UpdateUserModalComponent,
     DeleteUserModalComponent,
@@ -62,7 +64,8 @@ import { ReviewRegistrationRequestModalComponent } from './registration-requests
     CreateFacultyModalComponent,
     UpdateClassroomModalComponent,
     CreateClassroomModalComponent,
-    ReviewRegistrationRequestModalComponent
+    ReviewRegistrationRequestModalComponent,
+    PermitRegistrationRequestComponent
   ],
   providers: [ UsersService, FacultiesService, ClassroomsService, RegistrationRequestsService ],
   exports: []
