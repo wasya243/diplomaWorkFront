@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Review registration request</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="requestForm">
+      <app-form-validation [validationElement]="requestForm.get('faculty')" [offset]="3">
+        <div class="row">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="faculty" class="app-login-input-label">Faculty</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Faculty"
+                   id="faculty"
+                   formControlName="faculty">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="requestForm.get('classroom')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="classroom" class="app-login-input-label">Classroom</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Classroom"
+                   id="classroom"
+                   formControlName="classroom">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="requestForm.get('start')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="start" class="app-login-input-label">Start</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Start"
+                   id="start"
+                   formControlName="start">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="requestForm.get('end')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="end" class="app-login-input-label">End</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="End"
+                   id="end"
+                   formControlName="end">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="requestForm.get('isApproved')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="isApproved" class="app-login-input-label">Is Approved</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Is Approved"
+                   id="isApproved"
+                   formControlName="isApproved">
+          </div>
+        </div>
+      </app-form-validation>
+      <app-form-validation [validationElement]="requestForm.get('createdAt')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="createdAt" class="app-login-input-label">Created At</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Created At"
+                   id="createdAt"
+                   formControlName="createdAt">
+          </div>
+        </div>
+      </app-form-validation>
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Close</button>
+      </div>
+    </form>
+  </div>
+</div>

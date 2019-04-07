@@ -23,6 +23,14 @@
       <app-grid-row-cell class="col-2">{{ item.isApproved}}</app-grid-row-cell>
       <app-grid-row-cell class="col-2">{{ item.createdAt}}</app-grid-row-cell>
       <app-grid-row-cell class="d-flex justify-content-end">
+        <div class="d-flex">
+          <div class="search-btn app-control-btn" (click)="onReview(item)">
+            <fa-icon [icon]="searchIcon"></fa-icon>
+          </div>
+          <div class="permit-btn app-control-btn" (click)="onPermit(item)">
+            <fa-icon [icon]="thumbsUpIcon"></fa-icon>
+          </div>
+        </div>
       </app-grid-row-cell>
     </div>
   </ng-template>
