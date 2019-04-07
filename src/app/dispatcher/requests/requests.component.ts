@@ -5,6 +5,7 @@ import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { RequestsService } from './requests.service';
 import { ModalService } from '../../shared/modal/modal.service';
 import { ReviewRequestModalComponent } from './review-request-modal/review-request-modal.component';
+import { ApproveRequestModalComponent } from './approve-request-modal/approve-request-modal.component';
 
 import IRequest = diploma.IRequest;
 
@@ -45,13 +46,14 @@ export class RequestsComponent implements OnInit {
   }
 
   onPermit(clickedRow: IRequest) {
-    console.log(clickedRow);
-    // this.modalService.open(PermitRegistrationRequestComponent, { size: 'sm' }, clickedRow)
-    //   .then(requestId => {
-    //     this.registrationRequests.items = this.registrationRequests.items.filter(item => item.id !== requestId);
-    //   }).catch(error => {
-    //   console.error(error);
-    // });
+    this.modalService.open(ApproveRequestModalComponent, { size: 'sm' }, clickedRow)
+      .then(requestId => {
+        this.requests.items = this.requests.items.map(item =>
+          item.id === requestId ? Object.assign(item, { isApproved: true }) : item
+        );
+      }).catch(error => {
+      console.error(error);
+    });
   }
 
   onReview(clickedRow: IRequest) {

@@ -28,4 +28,8 @@ export class RequestsService {
         });
       }));
   }
+
+  approveRequest(requestId: number, isApproved: boolean): Observable<IRequest> {
+    return this.http.put<IRequest>(`/review-requests/${requestId}`, { isApproved });
+  }
 }

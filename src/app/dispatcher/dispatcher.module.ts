@@ -11,6 +11,7 @@ import { DispatcherRoutingModule } from './dispatcher-routing.module';
 import { RequestsComponent } from './requests/requests.component';
 import { RequestsService } from './requests/requests.service';
 import { ReviewRequestModalComponent } from './requests/review-request-modal/review-request-modal.component';
+import { ApproveRequestModalComponent } from './requests/approve-request-modal/approve-request-modal.component';
 
 @NgModule({
   imports: [
@@ -26,10 +27,12 @@ import { ReviewRequestModalComponent } from './requests/review-request-modal/rev
     DispatcherContainerComponent,
     AssignClassesComponent,
     RequestsComponent,
-    ReviewRequestModalComponent
+    ReviewRequestModalComponent,
+    ApproveRequestModalComponent
   ],
   entryComponents: [
-    ReviewRequestModalComponent
+    ReviewRequestModalComponent,
+    ApproveRequestModalComponent
   ],
   providers: [ RequestsService ],
   exports: []

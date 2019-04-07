@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Approve Request</h4>
+</div>
+<div class="modal-body">
+  <p class="warning-wrapper">Are you sure you want to approve this request?</p>
+  <p class="email-wrapper"><b>Faculty:</b> {{data.faculty}}</p>
+  <p class="email-wrapper"><b>Classroom:</b> {{data.classroom}}</p>
+  <p class="email-wrapper"><b>Start </b>{{data.start}}, <b>End </b>{{data.end}}</p>
+  <div class="d-flex justify-content-between custom-footer">
+    <button (click)="cancel()" class="btn btn-outline-secondary">No</button>
+    <button (click)="save()" class="btn btn-primary">Yes</button>
+  </div>
+</div>
