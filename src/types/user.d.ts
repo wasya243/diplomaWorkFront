@@ -31,4 +31,12 @@ declare namespace diploma {
     lastName: string;
     role: number;
   }
+
+  interface IRegistrationRequest {
+    email: string;
+    firstName: string;
+    lastName: string;
+    faculty: string;
+    id: number;
+  }
 }

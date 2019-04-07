@@ -10,6 +10,7 @@ import { FacultiesComponent } from './faculties/faculties.component';
 import { AdminContainerComponent } from './admin-container/admin-container.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersService } from './users/users.service';
+import { RegistrationRequestsService } from './registration-requests/registration-requests.service';
 import { FacultiesService } from './faculties/faculties.service';
 import { ClassroomsService } from './classrooms/classrooms.service';
 import { UpdateUserModalComponent } from './users/update-user-modal/update-user-modal.component';
@@ -22,6 +23,8 @@ import { DeleteClassroomModalComponent } from './classrooms/delete-classroom-mod
 import { CreateFacultyModalComponent } from './faculties/create-faculty-modal/create-faculty-modal.component';
 import { UpdateClassroomModalComponent } from './classrooms/update-classroom-modal/update-classroom-modal.component';
 import { CreateClassroomModalComponent } from './classrooms/create-classroom-modal/create-classroom-modal.component';
+import { RegistrationRequestsComponent } from './registration-requests/registration-requests.component';
+import { ReviewRegistrationRequestModalComponent } from './registration-requests/review-registration-request-modal/review-registration-request-modal.component';
 
 @NgModule({
   imports: [
@@ -46,7 +49,9 @@ import { CreateClassroomModalComponent } from './classrooms/create-classroom-mod
     DeleteClassroomModalComponent,
     CreateFacultyModalComponent,
     UpdateClassroomModalComponent,
-    CreateClassroomModalComponent ],
+    CreateClassroomModalComponent,
+    RegistrationRequestsComponent,
+    ReviewRegistrationRequestModalComponent ],
   entryComponents: [
     UpdateUserModalComponent,
     DeleteUserModalComponent,
@@ -56,9 +61,10 @@ import { CreateClassroomModalComponent } from './classrooms/create-classroom-mod
     DeleteClassroomModalComponent,
     CreateFacultyModalComponent,
     UpdateClassroomModalComponent,
-    CreateClassroomModalComponent
+    CreateClassroomModalComponent,
+    ReviewRegistrationRequestModalComponent
   ],
-  providers: [ UsersService, FacultiesService, ClassroomsService ],
+  providers: [ UsersService, FacultiesService, ClassroomsService, RegistrationRequestsService ],
   exports: []
 })
 export class AdminModule {

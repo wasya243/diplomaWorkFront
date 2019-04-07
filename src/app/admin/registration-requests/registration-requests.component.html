@@ -1,0 +1,33 @@
+<app-grid
+  [items]="registrationRequests.items"
+  [expandable]="false"
+  (onSortChange)="onSortChange($event)"
+>
+  <ng-template #gridHeadTemplate>
+    <div class="d-flex w-100">
+      <app-grid-head-cell class="col-3" sortName="firstName">First name</app-grid-head-cell>
+      <app-grid-head-cell class="col-3" sortName="lastName">Last name</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="email">Email</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="faculty">Faculty</app-grid-head-cell>
+      <app-grid-head-cell class=""></app-grid-head-cell>
+    </div>
+  </ng-template>
+  <ng-template #gridRowTemplate let-item="item">
+    <div class="d-flex w-100">
+      <app-grid-row-cell class="col-3">{{ item.firstName }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-3">{{ item.lastName }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.email }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.faculty}}</app-grid-row-cell>
+      <app-grid-row-cell class="d-flex justify-content-end">
+        <div class="d-flex">
+          <div class="search-btn app-control-btn" (click)="onReview(item)">
+            <fa-icon [icon]="searchIcon"></fa-icon>
+          </div>
+          <div class="permit-btn app-control-btn" (click)="onPermit(item)">
+            <fa-icon [icon]="thumbsUpIcon"></fa-icon>
+          </div>
+        </div>
+      </app-grid-row-cell>
+    </div>
+  </ng-template>
+</app-grid>

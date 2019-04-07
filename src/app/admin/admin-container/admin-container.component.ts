@@ -30,6 +30,14 @@ const navigationConfigs: INavigationBarConfig[] = [
     routeName: 'classrooms',
     routeNavigateTo: '../admin/classrooms',
     modalToInvoke: 'createClassroomModal'
+  },
+  {
+    headerName: 'Requests',
+    labelName: 'Requests list',
+    buttonName: 'Add request',
+    routeName: 'requests',
+    routeNavigateTo: '../admin/requests',
+    modalToInvoke: 'createRequestModal'
   }
 ];
 
