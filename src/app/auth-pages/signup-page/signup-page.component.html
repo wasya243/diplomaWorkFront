@@ -23,6 +23,21 @@
       </div>
     </app-form-validation>
 
+    <app-form-validation [validationElement]="signupForm.get('facultyId')" [offset]="0">
+      <div class="form-group mb-1 mt-4">
+        <label for="lastName" class="app-login-input-label">Faculty</label>
+        <select class="app-form-control" formControlName="facultyId">
+          <option
+            class="label"
+            *ngFor="let faculty of faculties"
+            [ngValue]="faculty.id"
+          >
+            {{faculty.name}}
+          </option>
+        </select>
+      </div>
+    </app-form-validation>
+
     <app-form-validation [validationElement]="signupForm.get('email')" [offset]="0">
       <div class="form-group mb-1 mt-4">
         <label for="loginEmail" class="app-login-input-label">Email Address</label>
