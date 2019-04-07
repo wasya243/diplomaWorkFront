@@ -1,3 +1,29 @@
-<p>
-  requests works!
-</p>
+<app-grid
+  [items]="requests.items"
+  [expandable]="false"
+  (onSortChange)="onSortChange($event)"
+>
+  <ng-template #gridHeadTemplate>
+    <div class="d-flex w-100">
+      <app-grid-head-cell class="col-2" sortName="faculty">Faculty</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="classroom">Classroom</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="start">Start</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="end">End</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="isApproved">Is Approved</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="createdAt">Created At</app-grid-head-cell>
+      <app-grid-head-cell class=""></app-grid-head-cell>
+    </div>
+  </ng-template>
+  <ng-template #gridRowTemplate let-item="item">
+    <div class="d-flex w-100">
+      <app-grid-row-cell class="col-2">{{ item.faculty }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.classroom }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.start }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.end}}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.isApproved}}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.createdAt}}</app-grid-row-cell>
+      <app-grid-row-cell class="d-flex justify-content-end">
+      </app-grid-row-cell>
+    </div>
+  </ng-template>
+</app-grid>

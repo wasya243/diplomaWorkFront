@@ -6,6 +6,7 @@ import { DispatcherContainerComponent } from './dispatcher-container/dispatcher-
 import { AssignClassesComponent } from './assign-classes/assign-classes.component';
 import { DispatcherRoutingModule } from './dispatcher-routing.module';
 import { RequestsComponent } from './requests/requests.component';
+import { RequestsService } from './requests/requests.service';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { RequestsComponent } from './requests/requests.component';
     DispatcherRoutingModule
   ],
   declarations: [ DispatcherContainerComponent, AssignClassesComponent, RequestsComponent ],
-  providers: [],
+  providers: [ RequestsService ],
   exports: []
 })
 export class DispatcherModule {
