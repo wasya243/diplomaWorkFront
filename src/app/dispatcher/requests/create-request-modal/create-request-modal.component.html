@@ -1,3 +1,52 @@
-<p>
-  create-request-modal works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Create Request</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="requestForm">
+
+      <app-form-validation [validationElement]="requestForm.get('facultyId')" [offset]="3">
+        <div class="row mt-20px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label class="app-login-input-label w-100">Faculty</label>
+          </div>
+          <div class="col-9">
+            <select class="app-form-control" formControlName="facultyId" #s (change)="onSelectFaculty(s.value)">
+              <option
+                class="label"
+                *ngFor="let faculty of faculties"
+                [ngValue]="faculty.id"
+              >
+                {{faculty.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="requestForm.get('classroomId')" [offset]="3">
+        <div class="row mt-20px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label class="app-login-input-label w-100">Classroom</label>
+          </div>
+          <div class="col-9">
+            <select class="app-form-control" formControlName="classroomId">
+              <option
+                class="label"
+                *ngFor="let classroom of classrooms"
+                [ngValue]="classroom.id"
+              >
+                {{classroom.number}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!requestForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

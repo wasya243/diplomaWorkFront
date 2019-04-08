@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { FormattingService } from '../../shared/formatting.service';
 
 import IRequest = diploma.IRequest;
+import ICreateRequest = diploma.ICreateRequest;
 
 @Injectable()
 export class RequestsService {
@@ -35,6 +36,10 @@ export class RequestsService {
 
   approveRequest(requestId: number, isApproved: boolean): Observable<IRequest> {
     return this.http.put<IRequest>(`/review-requests/${requestId}`, { isApproved });
+  }
+
+  createRequest(requestData: ICreateRequest): Observable<IRequest> {
+    return this.http.post<IRequest>(`/requests`, requestData);
   }
 
   onInitRequestCreationSubject(): Subject<void> {

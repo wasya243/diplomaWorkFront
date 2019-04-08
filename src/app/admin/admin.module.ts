@@ -11,8 +11,6 @@ import { AdminContainerComponent } from './admin-container/admin-container.compo
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersService } from './users/users.service';
 import { RegistrationRequestsService } from './registration-requests/registration-requests.service';
-import { FacultiesService } from './faculties/faculties.service';
-import { ClassroomsService } from './classrooms/classrooms.service';
 import { UpdateUserModalComponent } from './users/update-user-modal/update-user-modal.component';
 import { DeleteUserModalComponent } from './users/delete-user-modal/delete-user-modal.component';
 import { ResetPasswordModalComponent } from './users/reset-password-modal/reset-password-modal.component';
@@ -67,7 +65,7 @@ import { PermitRegistrationRequestComponent } from './registration-requests/perm
     ReviewRegistrationRequestModalComponent,
     PermitRegistrationRequestComponent
   ],
-  providers: [ UsersService, FacultiesService, ClassroomsService, RegistrationRequestsService ],
+  providers: [ UsersService, RegistrationRequestsService ],
   exports: []
 })
 export class AdminModule {

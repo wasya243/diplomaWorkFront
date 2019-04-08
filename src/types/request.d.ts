@@ -8,4 +8,10 @@ declare namespace diploma {
     faculty: string;
     classroom: number;
   }
+
+  interface ICreateRequest {
+    start: string;
+    end: string;
+    classroomId: number;
+  }
 }

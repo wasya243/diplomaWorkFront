@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ModalService } from '../../../shared/modal/modal.service';
-import { ClassroomsService } from '../classrooms.service';
-import { FacultiesService } from '../../faculties/faculties.service';
+import { ClassroomsService } from '../../../shared/classrooms.service';
+import { FacultiesService } from '../../../shared/faculties.service';
 
 import IClassroom = diploma.IClassroom;
 import IProcessedFaculty = diploma.IProcessedFaculty;

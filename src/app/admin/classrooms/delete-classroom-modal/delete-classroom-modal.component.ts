@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ModalService } from '../../../shared/modal/modal.service';
-import { ClassroomsService } from '../classrooms.service';
+import { ClassroomsService } from '../../../shared/classrooms.service';
 
 import IClassroom = diploma.IClassroom;
 

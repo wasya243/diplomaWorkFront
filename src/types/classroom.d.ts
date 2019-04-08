@@ -1,12 +1,18 @@
 // TODO: use composition & inheritance to avoid duplication
 declare namespace diploma {
+
+  interface IProcessedClassroom {
+    id: number;
+    classroom: number;
+  }
+
   interface IClassroom {
     amountOfSeats: number;
     faculty: {
       name: string;
       id: number;
     };
-    number: string;
+    number: number;
     id: number;
   }
 

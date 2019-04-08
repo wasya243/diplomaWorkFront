@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { FacultiesService } from './faculties.service';
+import { FacultiesService } from '../../shared/faculties.service';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { DeleteFacultyModalComponent } from './delete-faculty-modal/delete-faculty-modal.component';

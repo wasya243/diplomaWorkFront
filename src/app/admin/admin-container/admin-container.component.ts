@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router';
 
-import { FacultiesService } from '../faculties/faculties.service';
-import { ClassroomsService } from '../classrooms/classrooms.service';
+import { FacultiesService } from '../../shared/faculties.service';
+import { ClassroomsService } from '../../shared/classrooms.service';
 
 import INavigationBarConfig = diploma.INavigationBarConfig;
 

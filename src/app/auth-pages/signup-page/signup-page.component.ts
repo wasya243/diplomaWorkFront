@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import { RoleService } from '../../core/role.service';
 import { ValidationService } from '../../core/validation.service';
+import { FacultiesService } from '../../shared/faculties.service';
 
 import IFaculty = diploma.IFaculty;
 import IProcessedFaculty = diploma.IProcessedFaculty;
@@ -44,7 +45,8 @@ export class SignupPageComponent implements OnInit {
     private authService: AuthService,
     private roleService: RoleService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private facultiesService: FacultiesService
   ) {
     this.signupForm = fb.group({
       firstName: [ '', [ Validators.required ] ],
@@ -108,8 +110,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   private getFaculties(): void {
-    // unfortunately I don't know how to make facultiesService accessible from admin module without importing it to app module
-    this.http.get<IFaculty[]>(`/faculties`)
+    this.facultiesService.getFaculties()
       .subscribe((data: Array<IFaculty>) => {
         this.faculties = data.map(faculty => Object.assign({}, { id: faculty.id, name: faculty.name }));
       }, error => {

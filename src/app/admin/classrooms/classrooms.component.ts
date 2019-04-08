@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { ClassroomsService } from './classrooms.service';
+import { ClassroomsService } from '../../shared/classrooms.service';
 import { DeleteClassroomModalComponent } from './delete-classroom-modal/delete-classroom-modal.component';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';

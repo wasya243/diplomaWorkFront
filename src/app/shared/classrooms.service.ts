@@ -18,6 +18,10 @@ export class ClassroomsService {
     return this.http.get<IClassroom[]>(`/classrooms`);
   }
 
+  getClassroomsByFaculty(facultyId): Observable<Array<IClassroom>> {
+    return this.http.get<IClassroom[]>(`/faculties/${facultyId}/classrooms`);
+  }
+
   removeClassroom(id: number): Observable<{}> {
     return this.http.delete(`/classrooms/${id}`);
   }

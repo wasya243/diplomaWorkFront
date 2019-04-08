@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { ModalService } from '../../../shared/modal/modal.service';
-import { FacultiesService } from '../faculties.service';
+import { FacultiesService } from '../../../shared/faculties.service';
 
 @Component({
   selector: 'app-create-faculty-modal',
