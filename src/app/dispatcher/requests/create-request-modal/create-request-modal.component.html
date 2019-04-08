@@ -43,6 +43,93 @@
         </div>
       </app-form-validation>
 
+      <app-form-validation [validationElement]="requestForm.get('dateStart')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="startDate" class="app-login-input-label mb-1">Start date</label>
+          </div>
+          <div class="col-9">
+            <div class="password-wrapper">
+              <input class="app-form-control"
+                     placeholder="yyyy-mm-dd"
+                     formControlName="dateStart"
+                     ngbDatepicker
+                     id="startDate"
+                     #d1="ngbDatepicker"
+              >
+              <div class="input-group-append generate-password-btn" (click)="d1.toggle()">
+                <span class="input-group-text">
+                  <fa-icon [icon]="calendarIcon"></fa-icon>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="requestForm.get('dateEnd')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="startDate" class="app-login-input-label mb-1">End date</label>
+          </div>
+          <div class="col-9">
+            <div class="password-wrapper">
+              <input class="app-form-control"
+                     placeholder="yyyy-mm-dd"
+                     formControlName="dateEnd"
+                     ngbDatepicker
+                     id="endDate"
+                     #d2="ngbDatepicker"
+              >
+              <div class="input-group-append generate-password-btn" (click)="d2.toggle()">
+                <span class="input-group-text">
+                  <fa-icon [icon]="calendarIcon"></fa-icon>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="requestForm.get('timeStart')" [offset]="3">
+        <div class="row mt-20px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label class="app-login-input-label w-100">Time start</label>
+          </div>
+          <div class="col-9">
+            <select class="app-form-control" formControlName="timeStart">
+              <option
+                class="label"
+                *ngFor="let timepoint of timepoints"
+                [ngValue]="timepoint"
+              >
+                {{timepoint}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="requestForm.get('timeEnd')" [offset]="3">
+        <div class="row mt-20px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label class="app-login-input-label w-100">Time end</label>
+          </div>
+          <div class="col-9">
+            <select class="app-form-control" formControlName="timeEnd">
+              <option
+                class="label"
+                *ngFor="let timepoint of timepoints"
+                [ngValue]="timepoint"
+              >
+                {{timepoint}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </app-form-validation>
+
+
       <div class="d-flex justify-content-between custom-footer">
         <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
         <button (click)="save()" class="btn btn-primary" [disabled]="!requestForm.valid">Save</button>

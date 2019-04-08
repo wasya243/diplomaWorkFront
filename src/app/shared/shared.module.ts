@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormattingService } from './formatting.service';
 import { ClassroomsService } from './classrooms.service';
 import { FacultiesService } from './faculties.service';
+import { DoubleLessonsService } from './double-lessons.service';
 import { FormValidationComponent } from './form-validation/form-validation.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -36,7 +37,8 @@ import { ModalModule } from './modal/modal.module';
   providers: [
     FormattingService,
     FacultiesService,
-    ClassroomsService
+    ClassroomsService,
+    DoubleLessonsService
   ]
 })
 export class SharedModule {

@@ -55,3 +55,27 @@
 .selected {
   border-left: 6px solid $app-mario-gold;
 }
+
+.password-wrapper {
+  position: relative;
+  input {
+    padding-right: 50px;
+  }
+
+  .generate-password-btn {
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: transparent;
+      border: none;
+      color: $app-almost-black;
+    }
+
+    &:hover {
+      opacity: .75;
+    }
+  }
+}
