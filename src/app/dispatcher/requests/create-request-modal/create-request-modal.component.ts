@@ -57,7 +57,7 @@ export class CreateRequestModalComponent implements OnInit {
   private getClassroomsByFaculty(facultyId): void {
     this.classroomService.getClassroomsByFaculty(facultyId)
       .subscribe((data: Array<IClassroom>) => {
-        this.classrooms = data.map(classroom => Object.assign({}, { id: classroom.id, classroom: classroom.number }));
+        this.classrooms = data.map(classroom => Object.assign({}, { id: classroom.id, classroom: classroom.number })) as Array<IProcessedClassroom>;
       });
   }
 
