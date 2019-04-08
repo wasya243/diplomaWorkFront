@@ -6,6 +6,7 @@ import { RequestsService } from './requests.service';
 import { ModalService } from '../../shared/modal/modal.service';
 import { ReviewRequestModalComponent } from './review-request-modal/review-request-modal.component';
 import { ApproveRequestModalComponent } from './approve-request-modal/approve-request-modal.component';
+import { CreateRequestModalComponent } from './create-request-modal/create-request-modal.component';
 
 import IRequest = diploma.IRequest;
 
@@ -34,6 +35,13 @@ export class RequestsComponent implements OnInit {
 
   ngOnInit() {
     this.getRequests();
+    this.requestService.onInitRequestCreationSubject().subscribe(async () => {
+      this.modalService.open(CreateRequestModalComponent, { size: 'lg' })
+        .then(() => {
+          this.getRequests();
+        })
+        .catch(error => console.error(error));
+    });
   }
 
   onSortChange(sortData: IGridSortableColumnData) {

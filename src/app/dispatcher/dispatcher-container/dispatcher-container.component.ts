@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
 
+import { RequestsService } from '../requests/requests.service';
+
 import INavigationBarConfig = diploma.INavigationBarConfig;
 
 const navigationConfigs: INavigationBarConfig[] = [
@@ -32,7 +34,10 @@ export class DispatcherContainerComponent implements OnInit {
   navigationConfigs: INavigationBarConfig[] = navigationConfigs;
   currentRoute: string;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private requestsService: RequestsService
+  ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = this.router.url.split('/')[ 2 ];
@@ -45,7 +50,11 @@ export class DispatcherContainerComponent implements OnInit {
 
   onAddItem(modalName: string): void {
     // TODO: implement modals
-    console.log(modalName);
+    switch (modalName) {
+      case 'createRequestModal':
+        this.requestsService.initRequestCreation();
+        break;
+    }
   }
 
 }

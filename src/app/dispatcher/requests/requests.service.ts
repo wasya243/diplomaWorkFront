@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { FormattingService } from '../../shared/formatting.service';
@@ -10,6 +10,7 @@ import IRequest = diploma.IRequest;
 @Injectable()
 export class RequestsService {
 
+  private initRequestCreationSubject = new Subject<void>();
   private readonly dateFormat: string;
 
   constructor(
@@ -34,5 +35,13 @@ export class RequestsService {
 
   approveRequest(requestId: number, isApproved: boolean): Observable<IRequest> {
     return this.http.put<IRequest>(`/review-requests/${requestId}`, { isApproved });
+  }
+
+  onInitRequestCreationSubject(): Subject<void> {
+    return this.initRequestCreationSubject;
+  }
+
+  initRequestCreation(): void {
+    this.initRequestCreationSubject.next();
   }
 }

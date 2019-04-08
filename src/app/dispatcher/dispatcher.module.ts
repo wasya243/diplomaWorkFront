@@ -12,6 +12,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { RequestsService } from './requests/requests.service';
 import { ReviewRequestModalComponent } from './requests/review-request-modal/review-request-modal.component';
 import { ApproveRequestModalComponent } from './requests/approve-request-modal/approve-request-modal.component';
+import { CreateRequestModalComponent } from './requests/create-request-modal/create-request-modal.component';
 
 @NgModule({
   imports: [
@@ -28,11 +29,13 @@ import { ApproveRequestModalComponent } from './requests/approve-request-modal/a
     AssignClassesComponent,
     RequestsComponent,
     ReviewRequestModalComponent,
-    ApproveRequestModalComponent
+    ApproveRequestModalComponent,
+    CreateRequestModalComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,
-    ApproveRequestModalComponent
+    ApproveRequestModalComponent,
+    CreateRequestModalComponent
   ],
   providers: [ RequestsService ],
   exports: []
