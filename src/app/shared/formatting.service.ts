@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class FormattingService {
@@ -10,7 +10,8 @@ export class FormattingService {
   formatDate(date: string, format: string): string {
     let formattedDate = '';
     try {
-      formattedDate = moment(date).format(format);
+      const tz = moment.tz.guess();
+      formattedDate = moment(date).tz(tz).format(format);
     } catch (error) {
       console.error(error);
       formattedDate = date;
