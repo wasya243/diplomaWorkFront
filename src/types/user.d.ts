@@ -11,6 +11,7 @@ declare namespace diploma {
     lastName: string;
     id: number;
     role: string;
+    facultyId: number | null;
   }
 
   interface IUpdateUser {

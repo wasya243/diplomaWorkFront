@@ -18,7 +18,7 @@ export class StorageService {
     return this;
   }
 
-  get(key: string, parse: boolean = false): any {
+  get(key: string, parse: boolean = false): IUserData | string {
     const item = this.getStorage().getItem(this.getStorageKey(key));
     if (!parse) {
 
@@ -50,7 +50,7 @@ export class StorageService {
   }
 
   getUserData(): IUserData {
-    return this.get('user', true);
+    return this.get('user', true) as IUserData;
   }
 
   private getStorage(): Storage {

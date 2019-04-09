@@ -46,7 +46,8 @@ export class AuthService {
             firstName: userData.userInfo.firstName,
             lastName: userData.userInfo.lastName,
             role: userData.userInfo.role,
-            id: userData.userInfo.id
+            id: userData.userInfo.id,
+            facultyId: userData.userInfo.facultyId
           }
         });
       }));

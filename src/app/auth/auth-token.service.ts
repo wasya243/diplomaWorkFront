@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from '../core/storage.service';
 
+import IUserData = diploma.IUserData;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +11,7 @@ export class AuthTokenService {
   private accessToken: string;
 
   constructor(private storageService: StorageService) {
-    const user = this.storageService.get('user', true);
+    const user = this.storageService.get('user', true) as IUserData;
     if (user) {
       this.accessToken = user.accessToken;
     }

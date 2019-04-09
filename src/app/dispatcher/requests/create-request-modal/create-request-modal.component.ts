@@ -8,7 +8,9 @@ import { RequestsService } from '../requests.service';
 import { FacultiesService } from '../../../shared/faculties.service';
 import { ClassroomsService } from '../../../shared/classrooms.service';
 import { DoubleLessonsService } from '../../../shared/double-lessons.service';
+import { StorageService } from '../../../core/storage.service';
 
+import IUserData = diploma.IUserData;
 import IProcessedFaculty = diploma.IProcessedFaculty;
 import IFaculty = diploma.IFaculty;
 import IClassroom = diploma.IClassroom;
@@ -22,6 +24,7 @@ import IRequest = diploma.IRequest;
 })
 export class CreateRequestModalComponent implements OnInit {
 
+  userData: IUserData;
   requestForm: FormGroup;
   faculties: Array<IProcessedFaculty> = [];
   classrooms: Array<IProcessedClassroom> = [];
@@ -34,8 +37,10 @@ export class CreateRequestModalComponent implements OnInit {
     private requestsService: RequestsService,
     private facultiesService: FacultiesService,
     private classroomService: ClassroomsService,
-    private doubleLessonsService: DoubleLessonsService
+    private doubleLessonsService: DoubleLessonsService,
+    private storageService: StorageService
   ) {
+    this.userData = this.storageService.get('user', true) as IUserData;
     this.requestForm = this.fb.group({
       facultyId: [ null, [ Validators.required ] ],
       classroomId: [ null, [ Validators.required ] ],
@@ -59,7 +64,9 @@ export class CreateRequestModalComponent implements OnInit {
   private getFaculties(): void {
     this.facultiesService.getFaculties()
       .subscribe((data: Array<IFaculty>) => {
-        this.faculties = data.map(faculty => Object.assign({}, { id: faculty.id, name: faculty.name }));
+        this.faculties = data
+          .filter(faculty => faculty.id !== this.userData.userInfo.facultyId)
+          .map(faculty => Object.assign({}, { id: faculty.id, name: faculty.name }));
       }, error => {
         // TODO: maybe log errors?
         console.error(error);
@@ -107,15 +114,13 @@ export class CreateRequestModalComponent implements OnInit {
       classroomId: formValue.classroomId
     };
 
-    console.log(requestObject);
-
-    // this.requestsService.createRequest()
-    //   .subscribe((createdRequest: IRequest) => {
-    //       this.modalService.apply(createdRequest);
-    //     },
-    //     error => {
-    //       console.error(error);
-    //     });
+    this.requestsService.createRequest(requestObject)
+      .subscribe((createdRequest: IRequest) => {
+          this.modalService.apply(createdRequest);
+        },
+        error => {
+          console.error(error);
+        });
   }
 
 }
