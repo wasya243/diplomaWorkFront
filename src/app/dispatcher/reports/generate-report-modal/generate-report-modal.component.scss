@@ -1,0 +1,81 @@
+@import "variables";
+@import "shared-styles";
+
+.custom-footer {
+  margin-top: 40px;
+  margin-bottom: 60px;
+
+  .btn {
+    width: 115px;
+    height: 36px;
+  }
+
+  .btn-outline-secondary {
+    color: #000;
+    border-color: $app-light-periwinkle;
+  }
+}
+
+.app-sidebar {
+  width: 244px;
+  height: auto;
+  border-bottom: solid .125rem $app-light-grey;
+  background-color: #ffffff;
+  padding: 1.86rem;
+  position: relative;
+
+  .header {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.61;
+    letter-spacing: -0.4px;
+    color: $app-almost-black;
+  }
+
+  .label {
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    color: $app-almost-black;
+    margin-bottom: 1.86em;
+    z-index: 1;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+}
+
+.selected {
+  border-left: 6px solid $app-mario-gold;
+}
+
+.password-wrapper {
+  position: relative;
+  input {
+    padding-right: 50px;
+  }
+
+  .generate-password-btn {
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: transparent;
+      border: none;
+      color: $app-almost-black;
+    }
+
+    &:hover {
+      opacity: .75;
+    }
+  }
+}

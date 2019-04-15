@@ -7,6 +7,7 @@ import { MasterGuard } from '../auth/master-guard.service';
 import { AuthService } from '../auth/auth.service';
 import { AssignClassesComponent } from './assign-classes/assign-classes.component';
 import { RequestsComponent } from './requests/requests.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const dispatcherRoutes: Routes = [
   {
@@ -29,6 +30,10 @@ const dispatcherRoutes: Routes = [
       {
         path: 'assign-classes',
         component: AssignClassesComponent
+      },
+      {
+        path: 'reports',
+        component: ReportsComponent
       }
     ]
   }

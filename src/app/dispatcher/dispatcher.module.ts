@@ -10,9 +10,12 @@ import { AssignClassesComponent } from './assign-classes/assign-classes.componen
 import { DispatcherRoutingModule } from './dispatcher-routing.module';
 import { RequestsComponent } from './requests/requests.component';
 import { RequestsService } from './requests/requests.service';
+import { ReportsService } from './reports/reports.service';
 import { ReviewRequestModalComponent } from './requests/review-request-modal/review-request-modal.component';
 import { ApproveRequestModalComponent } from './requests/approve-request-modal/approve-request-modal.component';
 import { CreateRequestModalComponent } from './requests/create-request-modal/create-request-modal.component';
+import { ReportsComponent } from './reports/reports.component';
+import { GenerateReportModalComponent } from './reports/generate-report-modal/generate-report-modal.component';
 
 @NgModule({
   imports: [
@@ -30,14 +33,20 @@ import { CreateRequestModalComponent } from './requests/create-request-modal/cre
     RequestsComponent,
     ReviewRequestModalComponent,
     ApproveRequestModalComponent,
-    CreateRequestModalComponent
+    CreateRequestModalComponent,
+    ReportsComponent,
+    GenerateReportModalComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,
     ApproveRequestModalComponent,
-    CreateRequestModalComponent
+    CreateRequestModalComponent,
+    GenerateReportModalComponent
   ],
-  providers: [ RequestsService ],
+  providers: [
+    RequestsService,
+    ReportsService
+  ],
   exports: []
 })
 export class DispatcherModule {

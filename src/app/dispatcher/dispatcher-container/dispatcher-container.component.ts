@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
 
 import { RequestsService } from '../requests/requests.service';
+import { ReportsService } from '../reports/reports.service';
 
 import INavigationBarConfig = diploma.INavigationBarConfig;
 
@@ -21,6 +22,14 @@ const navigationConfigs: INavigationBarConfig[] = [
     routeName: 'requests',
     routeNavigateTo: '../dispatcher/requests',
     modalToInvoke: 'createRequestModal'
+  },
+  {
+    headerName: 'Reports',
+    labelName: 'Report list',
+    buttonName: 'Generate report',
+    routeName: 'reports',
+    routeNavigateTo: '../dispatcher/reports',
+    modalToInvoke: 'generateReportModal'
   }
 ];
 
@@ -36,7 +45,8 @@ export class DispatcherContainerComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private requestsService: RequestsService
+    private requestsService: RequestsService,
+    private reportsService: ReportsService
   ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -53,6 +63,9 @@ export class DispatcherContainerComponent implements OnInit {
     switch (modalName) {
       case 'createRequestModal':
         this.requestsService.initRequestCreation();
+        break;
+      case 'generateReportModal':
+        this.reportsService.initReportCreation();
         break;
     }
   }

@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Classroom usage report</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="reportForm">
+
+      <app-form-validation [validationElement]="reportForm.get('start')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="start" class="app-login-input-label mb-1">Start date</label>
+          </div>
+          <div class="col-9">
+            <div class="password-wrapper">
+              <input class="app-form-control"
+                     placeholder="yyyy-mm-dd"
+                     formControlName="start"
+                     ngbDatepicker
+                     id="start"
+                     #d1="ngbDatepicker"
+              >
+              <div class="input-group-append generate-password-btn" (click)="d1.toggle()">
+                <span class="input-group-text">
+                  <fa-icon [icon]="calendarIcon"></fa-icon>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="reportForm.get('end')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="end" class="app-login-input-label mb-1">End date</label>
+          </div>
+          <div class="col-9">
+            <div class="password-wrapper">
+              <input class="app-form-control"
+                     placeholder="yyyy-mm-dd"
+                     formControlName="end"
+                     ngbDatepicker
+                     id="end"
+                     #d2="ngbDatepicker"
+              >
+              <div class="input-group-append generate-password-btn" (click)="d2.toggle()">
+                <span class="input-group-text">
+                  <fa-icon [icon]="calendarIcon"></fa-icon>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!reportForm.valid">Generate</button>
+      </div>
+    </form>
+  </div>
+</div>
