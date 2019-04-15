@@ -1,0 +1,19 @@
+<table>
+  <thead>
+  <tr>
+    <th [attr.colspan]="2 + doubleLessons.length" class="header">{{report.assignmentDate}}</th>
+  </tr>
+  <tr>
+    <th>Classroom / Double lesson</th>
+    <th *ngFor="let doubleLesson of doubleLessons">{{doubleLesson.number}}</th>
+    <th>Total usage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let classroom of report.classrooms">
+    <th>{{classroom.classroomNumber}}</th>
+    <th *ngFor="let usage of classroom.usages">{{usage.count}}</th>
+    <th>{{classroom.totalUse}}</th>
+  </tr>
+  </tbody>
+</table>

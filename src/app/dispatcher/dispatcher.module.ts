@@ -16,6 +16,7 @@ import { ApproveRequestModalComponent } from './requests/approve-request-modal/a
 import { CreateRequestModalComponent } from './requests/create-request-modal/create-request-modal.component';
 import { ReportsComponent } from './reports/reports.component';
 import { GenerateReportModalComponent } from './reports/generate-report-modal/generate-report-modal.component';
+import { ReportTableComponent } from './reports/report-table/report-table.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { GenerateReportModalComponent } from './reports/generate-report-modal/ge
     ApproveRequestModalComponent,
     CreateRequestModalComponent,
     ReportsComponent,
-    GenerateReportModalComponent
+    GenerateReportModalComponent,
+    ReportTableComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,

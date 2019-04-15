@@ -1,3 +1,9 @@
-<p>
-  reports works!
-</p>
+<div *ngIf="reports.length === 0">
+  <p>To generate report press "Generate report" button.</p>
+</div>
+<app-report-table
+  class="mb-2"
+  *ngFor="let report of reports"
+  [report]="report"
+  [doubleLessons]="doubleLessons"
+></app-report-table>

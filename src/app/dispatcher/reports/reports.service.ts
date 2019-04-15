@@ -17,7 +17,7 @@ export class ReportsService {
     private http: HttpClient,
     private formattingService: FormattingService
   ) {
-    this.dateFormat = 'YYYY-MM-DD hh:mm a';
+    this.dateFormat = 'YYYY-MM-DD';
   }
 
   getReports(start: string, end: string): Observable<Array<IReport>> {

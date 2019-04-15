@@ -8,6 +8,7 @@ declare namespace diploma {
         doubleLessonNumber: number;
         count: number;
       } ];
+      totalUse: number;
     } ];
   }
 }
