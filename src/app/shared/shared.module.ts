@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { FormattingService } from './formatting.service';
+import { GroupsService } from './groups.service';
 import { ClassroomsService } from './classrooms.service';
 import { FacultiesService } from './faculties.service';
 import { DoubleLessonsService } from './double-lessons.service';
@@ -38,7 +39,8 @@ import { ModalModule } from './modal/modal.module';
     FormattingService,
     FacultiesService,
     ClassroomsService,
-    DoubleLessonsService
+    DoubleLessonsService,
+    GroupsService
   ]
 })
 export class SharedModule {

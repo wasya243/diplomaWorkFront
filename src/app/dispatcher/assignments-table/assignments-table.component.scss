@@ -1,0 +1,26 @@
+@import "variables";
+@import "shared-styles";
+
+table {
+  border-collapse: collapse;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+table, th, td {
+  border: 1px solid $app-marine;
+  padding: 10px;
+  text-align: left;
+}
+
+.header {
+  text-align: center;
+}
+
+.rotate span {
+  width: 10px;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}

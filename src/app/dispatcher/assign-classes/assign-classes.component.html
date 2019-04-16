@@ -1,3 +1,8 @@
-<p>
-  assign-classes works!
-</p>
+<div class="assignment-table-container">
+  <app-assignments-table
+    [doubleLessons]="doubleLessons"
+    [groups]="groups"
+    [assignment]="assignment"
+    *ngFor="let assignment of assignments"
+  ></app-assignments-table>
+</div>

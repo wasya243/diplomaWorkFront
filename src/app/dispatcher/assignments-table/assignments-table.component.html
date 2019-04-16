@@ -1,0 +1,11 @@
+<table>
+  <tr>
+    <th [attr.rowspan]="6" class="rotate"><span>{{getDate(assignment.assignmentDate)}}</span></th>
+    <th>Classroom / Group</th>
+    <th *ngFor="let group of groups">{{group.name}}</th>
+  </tr>
+  <tr *ngFor="let doubleLesson of doubleLessons">
+    <th>{{doubleLesson.number}}</th>
+    <th *ngFor="let group of groups">{{getAssignment(doubleLesson, group)}}</th>
+  </tr>
+</table>

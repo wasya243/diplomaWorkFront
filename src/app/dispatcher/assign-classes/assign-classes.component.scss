@@ -1,0 +1,9 @@
+:host {
+  margin-top: 60px;
+}
+
+.assignment-table-container {
+  height: calc(100% - 4.25rem);
+  overflow-x: scroll;
+  overflow-y: scroll;
+}

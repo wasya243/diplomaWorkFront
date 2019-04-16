@@ -10,6 +10,7 @@ import { AssignClassesComponent } from './assign-classes/assign-classes.componen
 import { DispatcherRoutingModule } from './dispatcher-routing.module';
 import { RequestsComponent } from './requests/requests.component';
 import { RequestsService } from './requests/requests.service';
+import { AssignmentsService } from './assign-classes/assignments.service';
 import { ReportsService } from './reports/reports.service';
 import { ReviewRequestModalComponent } from './requests/review-request-modal/review-request-modal.component';
 import { ApproveRequestModalComponent } from './requests/approve-request-modal/approve-request-modal.component';
@@ -17,6 +18,7 @@ import { CreateRequestModalComponent } from './requests/create-request-modal/cre
 import { ReportsComponent } from './reports/reports.component';
 import { GenerateReportModalComponent } from './reports/generate-report-modal/generate-report-modal.component';
 import { ReportTableComponent } from './reports/report-table/report-table.component';
+import { AssignmentsTableComponent } from './assignments-table/assignments-table.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,8 @@ import { ReportTableComponent } from './reports/report-table/report-table.compon
     CreateRequestModalComponent,
     ReportsComponent,
     GenerateReportModalComponent,
-    ReportTableComponent
+    ReportTableComponent,
+    AssignmentsTableComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,
@@ -47,7 +50,8 @@ import { ReportTableComponent } from './reports/report-table/report-table.compon
   ],
   providers: [
     RequestsService,
-    ReportsService
+    ReportsService,
+    AssignmentsService
   ],
   exports: []
 })
