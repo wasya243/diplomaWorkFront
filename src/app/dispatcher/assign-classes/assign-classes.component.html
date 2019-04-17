@@ -7,12 +7,15 @@
       *ngFor="let assignment of assignments"
     ></app-assignments-table>
   </div>
-  <div class="container flex-row mt-2">
-    <app-week-bar-item
-      *ngFor="let week of weeks"
-      [week]="week"
-      (click)="selectWeek(week)"
-      [isSelected]="isSelected(week)"
-    ></app-week-bar-item>
+  <div class="mt-2">
+    <div><span class="header">Weeks</span></div>
+    <div class="container flex-row pl-0">
+      <app-week-bar-item
+        *ngFor="let week of weeks"
+        [week]="week"
+        (click)="selectWeek(week)"
+        [isSelected]="isSelected(week)"
+      ></app-week-bar-item>
+    </div>
   </div>
 </div>
