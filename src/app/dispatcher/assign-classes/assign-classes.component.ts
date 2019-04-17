@@ -5,11 +5,12 @@ import * as moment from 'moment-timezone';
 import { DoubleLessonsService } from '../../shared/double-lessons.service';
 import { GroupsService } from '../../shared/groups.service';
 import { AssignmentsService } from './assignments.service';
+import { WeeksService } from './weeks.service';
 
 import IAssignment = diploma.IAssignment;
 import IDoubleLesson = diploma.IDoubleLesson;
 import IGroup = diploma.IGroup;
-
+import IWeek = diploma.IWeek;
 
 @Component({
   selector: 'app-assign-classes',
@@ -21,48 +22,15 @@ export class AssignClassesComponent implements OnInit {
   assignments: Array<IAssignment>;
   doubleLessons: Array<IDoubleLesson>;
   groups: Array<IGroup>;
-  weeks: Array<any>;
-  selectedWeek: any;
+  weeks: Array<IWeek>;
+  selectedWeek: IWeek;
 
   constructor(
     private groupsService: GroupsService,
     private doubleLessonsService: DoubleLessonsService,
-    private assignmentsService: AssignmentsService
+    private assignmentsService: AssignmentsService,
+    private weeksService: WeeksService
   ) {
-    // TODO: fetch weeks instead of hardcoding it
-    this.weeks = [
-      {
-        id: 1,
-        number: 1,
-        start: '2019-04-08T00:00:00+03:00',
-        end: '2019-04-12T00:00:00+03:00'
-      },
-      {
-        id: 2,
-        number: 2,
-        start: '2019-04-15T00:00:00+03:00',
-        end: '2019-04-19T00:00:00+03:00'
-      },
-      {
-        id: 3,
-        number: 3,
-        start: '2019-04-22T00:00:00+03:00',
-        end: '2019-04-26T00:00:00+03:00'
-      },
-      {
-        id: 4,
-        number: 4,
-        start: '2019-04-29T00:00:00+03:00',
-        end: '2019-05-03T00:00:00+03:00'
-      },
-      {
-        id: 5,
-        number: 5,
-        start: '2019-05-06T00:00:00+03:00',
-        end: '2019-05-10T00:00:00+03:00'
-      }
-    ];
-    this.selectedWeek = this.weeks[ 0 ];
   }
 
   ngOnInit() {
@@ -83,6 +51,8 @@ export class AssignClassesComponent implements OnInit {
       this.assignments = response[ 0 ];
       this.doubleLessons = response[ 1 ];
       this.groups = response[ 2 ];
+      this.weeks = response[ 3 ];
+      this.selectedWeek = this.weeks[ 0 ];
     }, error => console.error(error));
   }
 
@@ -102,7 +72,15 @@ export class AssignClassesComponent implements OnInit {
   }
 
   private fetchData(start: string, end: string) {
-    return forkJoin(this.getAssignments(start, end), this.getDoubleLessons(), this.getGroups());
+    // TODO: implement functionality to choose term instead of hardcoding it
+    const termId = 1;
+
+    return forkJoin(
+      this.getAssignments(start, end),
+      this.getDoubleLessons(),
+      this.getGroups(),
+      this.getWeeksByTerm(termId)
+    );
   }
 
   private getGroups() {
@@ -114,7 +92,10 @@ export class AssignClassesComponent implements OnInit {
   }
 
   private getAssignments(start: string, end: string) {
-
     return this.assignmentsService.getAssignments(start, end);
+  }
+
+  private getWeeksByTerm(termId: number) {
+    return this.weeksService.getWeeksByTerm(termId);
   }
 }
