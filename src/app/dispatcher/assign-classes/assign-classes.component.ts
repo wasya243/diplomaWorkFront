@@ -29,6 +29,7 @@ export class AssignClassesComponent implements OnInit {
     private doubleLessonsService: DoubleLessonsService,
     private assignmentsService: AssignmentsService
   ) {
+    // TODO: fetch weeks instead of hardcoding it
     this.weeks = [
       {
         id: 1,
