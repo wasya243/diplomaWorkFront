@@ -1,10 +1,12 @@
+@import "variables";
+@import "shared-styles";
+
 :host {
   margin-top: 60px;
-  max-height: 700px;
 }
 
 .assignment-table-container {
-  height: calc(100% - 4.25rem);
+  height: calc(700px - 4.25rem);
   overflow-x: scroll;
   overflow-y: scroll;
 }

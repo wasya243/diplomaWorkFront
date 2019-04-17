@@ -1,8 +1,18 @@
-<div class="assignment-table-container">
-  <app-assignments-table
-    [doubleLessons]="doubleLessons"
-    [groups]="groups"
-    [assignment]="assignment"
-    *ngFor="let assignment of assignments"
-  ></app-assignments-table>
+<div>
+  <div class="assignment-table-container">
+    <app-assignments-table
+      [doubleLessons]="doubleLessons"
+      [groups]="groups"
+      [assignment]="assignment"
+      *ngFor="let assignment of assignments"
+    ></app-assignments-table>
+  </div>
+  <div class="container flex-row mt-2">
+    <app-week-bar-item
+      *ngFor="let week of weeks"
+      [week]="week"
+      (click)="selectWeek(week)"
+      [isSelected]="isSelected(week)"
+    ></app-week-bar-item>
+  </div>
 </div>

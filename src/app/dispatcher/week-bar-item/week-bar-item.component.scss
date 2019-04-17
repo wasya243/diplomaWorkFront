@@ -1,0 +1,23 @@
+@import "variables";
+@import "shared-styles";
+
+.item {
+  width: 30px;
+  text-align: center;
+  height: 30px;
+  display: inline-block;
+  background-color: $app-bright-blue;
+  color: white;
+  cursor: pointer;
+  margin-right: 5px;
+  border: $app-marine 1px solid;
+
+  span {
+    vertical-align: -webkit-baseline-middle;
+  }
+}
+
+.selected {
+  background: $app-mario-gold;
+  color: $app-marine;
+}
