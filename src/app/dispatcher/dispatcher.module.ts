@@ -21,6 +21,7 @@ import { ReportTableComponent } from './reports/report-table/report-table.compon
 import { AssignmentsTableComponent } from './assignments-table/assignments-table.component';
 import { WeekBarItemComponent } from './week-bar-item/week-bar-item.component';
 import { WeeksService } from './assign-classes/weeks.service';
+import { CreateAssignmentModalComponent } from './assign-classes/create-assignment-modal/create-assignment-modal.component';
 
 @NgModule({
   imports: [
@@ -43,13 +44,15 @@ import { WeeksService } from './assign-classes/weeks.service';
     GenerateReportModalComponent,
     ReportTableComponent,
     AssignmentsTableComponent,
-    WeekBarItemComponent
+    WeekBarItemComponent,
+    CreateAssignmentModalComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,
     ApproveRequestModalComponent,
     CreateRequestModalComponent,
-    GenerateReportModalComponent
+    GenerateReportModalComponent,
+    CreateAssignmentModalComponent
   ],
   providers: [
     RequestsService,

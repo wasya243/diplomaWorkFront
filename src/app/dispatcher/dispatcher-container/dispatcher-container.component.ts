@@ -3,6 +3,7 @@ import { Event, NavigationEnd, Router } from '@angular/router';
 
 import { RequestsService } from '../requests/requests.service';
 import { ReportsService } from '../reports/reports.service';
+import { AssignmentsService } from '../assign-classes/assignments.service';
 
 import INavigationBarConfig = diploma.INavigationBarConfig;
 
@@ -46,7 +47,8 @@ export class DispatcherContainerComponent implements OnInit {
   constructor(
     private router: Router,
     private requestsService: RequestsService,
-    private reportsService: ReportsService
+    private reportsService: ReportsService,
+    private assignmentsService: AssignmentsService
   ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -66,6 +68,9 @@ export class DispatcherContainerComponent implements OnInit {
         break;
       case 'generateReportModal':
         this.reportsService.initReportCreation();
+        break;
+      case 'createAssignmentModal':
+        this.assignmentsService.initAssignmentCreation();
         break;
     }
   }

@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { forkJoin, from } from 'rxjs';
 import * as moment from 'moment-timezone';
+import { mergeMap } from 'rxjs/operators';
 
 import { DoubleLessonsService } from '../../shared/double-lessons.service';
 import { GroupsService } from '../../shared/groups.service';
 import { AssignmentsService } from './assignments.service';
+import { CreateAssignmentModalComponent } from './create-assignment-modal/create-assignment-modal.component';
+import { ModalService } from '../../shared/modal/modal.service';
 import { WeeksService } from './weeks.service';
 
 import IAssignment = diploma.IAssignment;
+import ICreatedAssignment = diploma.ICreatedAssignment;
 import IDoubleLesson = diploma.IDoubleLesson;
 import IGroup = diploma.IGroup;
 import IWeek = diploma.IWeek;
@@ -29,7 +33,8 @@ export class AssignClassesComponent implements OnInit {
     private groupsService: GroupsService,
     private doubleLessonsService: DoubleLessonsService,
     private assignmentsService: AssignmentsService,
-    private weeksService: WeeksService
+    private weeksService: WeeksService,
+    private modalService: ModalService
   ) {
   }
 
@@ -54,13 +59,38 @@ export class AssignClassesComponent implements OnInit {
       this.weeks = response[ 3 ];
       this.selectedWeek = this.weeks[ 0 ];
     }, error => console.error(error));
+
+    // TODO: avoid subscribe inside subscribe
+    this.assignmentsService.onInitAssignmentCreationSubject().subscribe(async () => {
+      this.modalService.open(CreateAssignmentModalComponent, { size: 'lg' })
+        .then((createdAssignment: ICreatedAssignment) => {
+          const { start, end } = this.getFormattedStartEnd(this.selectedWeek.start, this.selectedWeek.end);
+          this.getAssignments(start, end).subscribe((assignments) => {
+            this.assignments = assignments;
+          });
+        })
+        .catch(error => console.error(error));
+    });
+    // TODO: clarify what kind of error occurs here
+    // this.assignmentsService.onInitAssignmentCreationSubject().pipe(
+    //   mergeMap(() => {
+    //     console.log('open modal');
+    //     return from(this.modalService.open(CreateAssignmentModalComponent, { size: 'lg' }));
+    //   }),
+    //   mergeMap((createdAssignment: ICreatedAssignment) => {
+    //     console.log('refetch assignments');
+    //     const { start, end } = this.getFormattedStartEnd(this.selectedWeek.start, this.selectedWeek.end);
+    //     return this.getAssignments(start, end);
+    //   })
+    // ).subscribe((assignments) => {
+    //   this.assignments = assignments;
+    // }, error => console.error(error));
   }
 
   selectWeek(week) {
     this.selectedWeek = week;
 
-    const start = moment(this.selectedWeek.start).format('YYYY-MM-DD');
-    const end = moment(this.selectedWeek.end).format('YYYY-MM-DD');
+    const { start, end } = this.getFormattedStartEnd(this.selectedWeek.start, this.selectedWeek.end);
 
     this.getAssignments(start, end).subscribe((response) => {
       this.assignments = response;
@@ -69,6 +99,13 @@ export class AssignClassesComponent implements OnInit {
 
   isSelected(week) {
     return this.selectedWeek.id === week.id;
+  }
+
+  private getFormattedStartEnd(start: string, end: string): { start: string, end: string } {
+    return {
+      start: moment(start).format('YYYY-MM-DD'),
+      end: moment(end).format('YYYY-MM-DD')
+    };
   }
 
   private fetchData(start: string, end: string) {

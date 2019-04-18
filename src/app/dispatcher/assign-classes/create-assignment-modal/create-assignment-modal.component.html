@@ -1,11 +1,11 @@
 <div class="modal-header">
-  <h4 class="modal-header__wrapper">Create Request</h4>
+  <h4 class="modal-header__wrapper">Create Assignment</h4>
 </div>
 <div class="modal-body">
   <div class="container">
-    <form [formGroup]="requestForm">
+    <form [formGroup]="assignmentForm">
 
-      <app-form-validation [validationElement]="requestForm.get('facultyId')" [offset]="3">
+      <app-form-validation [validationElement]="assignmentForm.get('facultyId')" [offset]="3">
         <div class="row mt-20px">
           <div class="col-3 modal-body__label-wrapper">
             <label class="app-login-input-label w-100">Faculty</label>
@@ -24,7 +24,7 @@
         </div>
       </app-form-validation>
 
-      <app-form-validation [validationElement]="requestForm.get('classroomId')" [offset]="3">
+      <app-form-validation [validationElement]="assignmentForm.get('classroomId')" [offset]="3">
         <div class="row mt-20px">
           <div class="col-3 modal-body__label-wrapper">
             <label class="app-login-input-label w-100">Classroom</label>
@@ -43,18 +43,18 @@
         </div>
       </app-form-validation>
 
-      <app-form-validation [validationElement]="requestForm.get('dateStart')" [offset]="3">
+      <app-form-validation [validationElement]="assignmentForm.get('assignmentDate')" [offset]="3">
         <div class="row mt-30px">
           <div class="col-3 modal-body__label-wrapper">
-            <label for="startDate" class="app-login-input-label mb-1">Start date</label>
+            <label for="assignmentDate" class="app-login-input-label mb-1">Date</label>
           </div>
           <div class="col-9">
             <div class="password-wrapper">
               <input class="app-form-control"
                      placeholder="yyyy-mm-dd"
-                     formControlName="dateStart"
+                     formControlName="assignmentDate"
                      ngbDatepicker
-                     id="startDate"
+                     id="assignmentDate"
                      #d1="ngbDatepicker"
               >
               <div class="input-group-append generate-password-btn" (click)="d1.toggle()">
@@ -67,72 +67,48 @@
         </div>
       </app-form-validation>
 
-      <app-form-validation [validationElement]="requestForm.get('dateEnd')" [offset]="3">
-        <div class="row mt-30px">
-          <div class="col-3 modal-body__label-wrapper">
-            <label for="dateEnd" class="app-login-input-label mb-1">End date</label>
-          </div>
-          <div class="col-9">
-            <div class="password-wrapper">
-              <input class="app-form-control"
-                     placeholder="yyyy-mm-dd"
-                     formControlName="dateEnd"
-                     ngbDatepicker
-                     id="endDate"
-                     #d2="ngbDatepicker"
-              >
-              <div class="input-group-append generate-password-btn" (click)="d2.toggle()">
-                <span class="input-group-text">
-                  <fa-icon [icon]="calendarIcon"></fa-icon>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </app-form-validation>
 
-      <app-form-validation [validationElement]="requestForm.get('timeStart')" [offset]="3">
+      <app-form-validation [validationElement]="assignmentForm.get('doubleLessonId')" [offset]="3">
         <div class="row mt-20px">
           <div class="col-3 modal-body__label-wrapper">
-            <label class="app-login-input-label w-100">Time start</label>
+            <label class="app-login-input-label w-100">Double lesson</label>
           </div>
           <div class="col-9">
-            <select class="app-form-control" formControlName="timeStart">
+            <select class="app-form-control" formControlName="doubleLessonId">
               <option
                 class="label"
-                *ngFor="let timepoint of timepoints"
-                [ngValue]="timepoint"
+                *ngFor="let doubleLesson of doubleLessons"
+                [ngValue]="doubleLesson.id"
               >
-                {{timepoint}}
+                {{doubleLesson.number}}
               </option>
             </select>
           </div>
         </div>
       </app-form-validation>
 
-      <app-form-validation [validationElement]="requestForm.get('timeEnd')" [offset]="3">
+      <app-form-validation [validationElement]="assignmentForm.get('groupId')" [offset]="3">
         <div class="row mt-20px">
           <div class="col-3 modal-body__label-wrapper">
-            <label class="app-login-input-label w-100">Time end</label>
+            <label class="app-login-input-label w-100">Group</label>
           </div>
           <div class="col-9">
-            <select class="app-form-control" formControlName="timeEnd">
+            <select class="app-form-control" formControlName="groupId">
               <option
                 class="label"
-                *ngFor="let timepoint of timepoints"
-                [ngValue]="timepoint"
+                *ngFor="let group of groups"
+                [ngValue]="group.id"
               >
-                {{timepoint}}
+                {{group.name}}
               </option>
             </select>
           </div>
         </div>
       </app-form-validation>
-
 
       <div class="d-flex justify-content-between custom-footer">
         <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
-        <button (click)="save()" class="btn btn-primary" [disabled]="!requestForm.valid">Save</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!assignmentForm.valid">Save</button>
       </div>
     </form>
   </div>

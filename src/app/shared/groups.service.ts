@@ -13,4 +13,8 @@ export class GroupsService {
   getGroups(): Observable<Array<IGroup>> {
     return this.http.get<IGroup[]>(`/groups`);
   }
+
+  getGroupsByFaculty(facultyId: number): Observable<Array<IGroup>> {
+    return this.http.get<IGroup[]>(`/faculties/${facultyId}/groups`);
+  }
 }
