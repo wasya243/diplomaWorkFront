@@ -1,3 +1,5 @@
-<div class="contextmenu" [ngStyle]="{'left.px': x, 'top.px': y}">
-  this is your contextmenu content
+<div class="contextmenu-container" [ngStyle]="{'left.px': x, 'top.px': y}">
+  <div class="contextmenu">
+    <span (click)="onDeleteAssignment()">Delete</span>
+  </div>
 </div>

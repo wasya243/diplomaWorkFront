@@ -22,6 +22,10 @@ export class AssignmentsService {
     return this.http.post<ICreatedAssignment>(`/assignments`, assignment);
   }
 
+  removeAssignment(assignmentId: number): Observable<{}> {
+    return this.http.delete(`/assignments/${assignmentId}`);
+  }
+
   onInitAssignmentCreationSubject(): Subject<void> {
     return this.initAssignmentCreationSubject;
   }

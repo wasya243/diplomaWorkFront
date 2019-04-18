@@ -14,6 +14,7 @@ import IAssignment = diploma.IAssignment;
 import ICreatedAssignment = diploma.ICreatedAssignment;
 import IDoubleLesson = diploma.IDoubleLesson;
 import IGroup = diploma.IGroup;
+import IContextMenuAssignment = diploma.IContextMenuAssignment;
 import IWeek = diploma.IWeek;
 
 @Component({
@@ -99,6 +100,15 @@ export class AssignClassesComponent implements OnInit {
 
   isSelected(week) {
     return this.selectedWeek.id === week.id;
+  }
+
+  onRemoveAssignment(data: IContextMenuAssignment) {
+    this.assignmentsService.removeAssignment(data.id).subscribe(() => {
+      const { start, end } = this.getFormattedStartEnd(this.selectedWeek.start, this.selectedWeek.end);
+      this.getAssignments(start, end).subscribe((assignments) => {
+        this.assignments = assignments;
+      });
+    }, error => console.error(error));
   }
 
   private getFormattedStartEnd(start: string, end: string): { start: string, end: string } {

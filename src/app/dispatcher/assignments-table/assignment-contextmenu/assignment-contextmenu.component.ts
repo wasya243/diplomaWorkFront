@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import IContextMenuAssignment = diploma.IContextMenuAssignment;
 
 @Component({
   selector: 'app-assignment-contextmenu',
@@ -9,11 +11,19 @@ export class AssignmentContextmenuComponent implements OnInit {
 
   @Input() x: number;
   @Input() y: number;
+  @Input() assignment: IContextMenuAssignment;
+  @Output() deleteAssignment = new EventEmitter<any>();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  onDeleteAssignment() {
+    if (this.assignment.classroom.number) {
+      this.deleteAssignment.emit(this.assignment);
+    }
   }
 
 }

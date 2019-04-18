@@ -41,4 +41,17 @@ declare namespace diploma {
     doubleLesson: IDoubleLesson;
     group: IGroup;
   }
+
+  interface IContextMenuAssignment {
+    id: number;
+    groupId: number;
+    doubleLessonId: number;
+    classroom: {
+      id: number;
+      number: number;
+      amountOfSeats: number;
+      facultyId: number;
+    };
+    createdAt: string;
+  }
 }

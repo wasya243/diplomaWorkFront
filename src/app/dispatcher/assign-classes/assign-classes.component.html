@@ -4,6 +4,7 @@
       [doubleLessons]="doubleLessons"
       [groups]="groups"
       [assignment]="assignment"
+      (removeAssignment)="onRemoveAssignment($event)"
       *ngFor="let assignment of assignments"
     ></app-assignments-table>
   </div>
