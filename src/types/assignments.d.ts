@@ -3,6 +3,7 @@ declare namespace diploma {
   import IFaculty = diploma.IFaculty;
   import IGroup = diploma.IGroup;
   import IDoubleLesson = diploma.IDoubleLesson;
+  import IUser = diploma.IUser;
 
   interface IAssignment {
     assignmentDate: string;
@@ -36,6 +37,7 @@ declare namespace diploma {
       number: number;
       faculty: IFaculty
     };
+    dispatcher: IUser;
     doubleLesson: IDoubleLesson;
     group: IGroup;
   }

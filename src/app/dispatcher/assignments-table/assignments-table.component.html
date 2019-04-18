@@ -1,4 +1,4 @@
-<table>
+<table (click)="disableContextMenu()" oncontextmenu="return false;">
   <tr>
     <th [attr.rowspan]="6" class="rotate"><span>{{getDate(assignment.assignmentDate)}}</span></th>
     <th>Classroom / Group</th>
@@ -6,6 +6,13 @@
   </tr>
   <tr *ngFor="let doubleLesson of doubleLessons">
     <th>{{doubleLesson.number}}</th>
-    <th *ngFor="let group of groups">{{getAssignment(doubleLesson, group)}}</th>
+    <th
+      *ngFor="let group of groups"
+      (contextmenu)="onRightClick($event)"
+    >{{getAssignment(doubleLesson, group)}}
+    </th>
   </tr>
+  <div *ngIf="contextmenu==true">
+    <app-assignment-contextmenu [x]="contextmenuX" [y]="contextmenuY"></app-assignment-contextmenu>
+  </div>
 </table>

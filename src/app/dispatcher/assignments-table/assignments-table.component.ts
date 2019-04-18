@@ -16,6 +16,10 @@ export class AssignmentsTableComponent implements OnInit {
   @Input() doubleLessons: Array<IDoubleLesson>;
   @Input() groups: Array<IGroup>;
 
+  contextmenu = true;
+  contextmenuY = 0;
+  contextmenuX = 0;
+
   constructor() {
   }
 
@@ -29,8 +33,17 @@ export class AssignmentsTableComponent implements OnInit {
     return targetAssignment ? targetAssignment.classroom.number : '';
   }
 
+  disableContextMenu() {
+    this.contextmenu = false;
+  }
+
   getDate(date: string) {
     return moment(date).format('dddd, YYYY-MM-DD');
+  }
+
+  onRightClick(event) {
+    this.contextmenuX = event.x;
+    this.contextmenuY = event.y;
   }
 
 }
