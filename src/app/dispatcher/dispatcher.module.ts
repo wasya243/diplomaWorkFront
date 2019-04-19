@@ -23,6 +23,8 @@ import { WeekBarItemComponent } from './week-bar-item/week-bar-item.component';
 import { WeeksService } from './assign-classes/weeks.service';
 import { CreateAssignmentModalComponent } from './assign-classes/create-assignment-modal/create-assignment-modal.component';
 import { AssignmentContextmenuComponent } from './assignments-table/assignment-contextmenu/assignment-contextmenu.component';
+import { GetAvailableClassroomsModalComponent } from './assign-classes/get-available-classrooms-modal/get-available-classrooms-modal.component';
+import { FreeClassroomCardComponent } from './assign-classes/free-classroom-card/free-classroom-card.component';
 
 @NgModule({
   imports: [
@@ -47,14 +49,17 @@ import { AssignmentContextmenuComponent } from './assignments-table/assignment-c
     AssignmentsTableComponent,
     WeekBarItemComponent,
     CreateAssignmentModalComponent,
-    AssignmentContextmenuComponent
+    AssignmentContextmenuComponent,
+    GetAvailableClassroomsModalComponent,
+    FreeClassroomCardComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,
     ApproveRequestModalComponent,
     CreateRequestModalComponent,
     GenerateReportModalComponent,
-    CreateAssignmentModalComponent
+    CreateAssignmentModalComponent,
+    GetAvailableClassroomsModalComponent
   ],
   providers: [
     RequestsService,

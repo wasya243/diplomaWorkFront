@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Get List Of Classrooms</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="getAvailableClassroomsForm">
+
+      <app-form-validation [validationElement]="getAvailableClassroomsForm.get('assignmentDate')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="assignmentDate" class="app-login-input-label mb-1">Date</label>
+          </div>
+          <div class="col-9">
+            <input class="app-form-control"
+                   placeholder="yyyy-mm-dd"
+                   formControlName="assignmentDate"
+                   id="assignmentDate"
+            >
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="getAvailableClassroomsForm.get('doubleLesson')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="doubleLesson" class="app-login-input-label mb-1">Double lesson</label>
+          </div>
+          <div class="col-9">
+            <input class="app-form-control"
+                   placeholder="double lesson"
+                   formControlName="doubleLesson"
+                   id="doubleLesson"
+            >
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="getAvailableClassroomsForm.get('facultyId')" [offset]="3">
+        <div class="row mt-20px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label class="app-login-input-label w-100">Faculty</label>
+          </div>
+          <div class="col-9">
+            <select class="app-form-control" formControlName="facultyId">
+              <option
+                class="label"
+                *ngFor="let faculty of faculties"
+                [ngValue]="faculty.id"
+              >
+                {{faculty.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </app-form-validation>
+
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!getAvailableClassroomsForm.valid">Get List
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

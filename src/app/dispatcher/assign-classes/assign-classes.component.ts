@@ -6,6 +6,8 @@ import { mergeMap } from 'rxjs/operators';
 import { DoubleLessonsService } from '../../shared/double-lessons.service';
 import { GroupsService } from '../../shared/groups.service';
 import { AssignmentsService } from './assignments.service';
+import { ClassroomsService } from '../../shared/classrooms.service';
+import { GetAvailableClassroomsModalComponent } from './get-available-classrooms-modal/get-available-classrooms-modal.component';
 import { CreateAssignmentModalComponent } from './create-assignment-modal/create-assignment-modal.component';
 import { ModalService } from '../../shared/modal/modal.service';
 import { WeeksService } from './weeks.service';
@@ -16,6 +18,7 @@ import IDoubleLesson = diploma.IDoubleLesson;
 import IGroup = diploma.IGroup;
 import IContextMenuAssignment = diploma.IContextMenuAssignment;
 import IWeek = diploma.IWeek;
+import IClassroom = diploma.IClassroom;
 
 @Component({
   selector: 'app-assign-classes',
@@ -24,18 +27,23 @@ import IWeek = diploma.IWeek;
 })
 export class AssignClassesComponent implements OnInit {
 
-  assignments: Array<IAssignment>;
-  doubleLessons: Array<IDoubleLesson>;
-  groups: Array<IGroup>;
-  weeks: Array<IWeek>;
+  assignments: Array<IAssignment> = [];
+  doubleLessons: Array<IDoubleLesson> = [];
+  groups: Array<IGroup> = [];
+  weeks: Array<IWeek> = [];
   selectedWeek: IWeek;
+  freeClassrooms: Array<IClassroom> = [];
+  // this props is used to display info in free classrooms list header
+  assignmentDateFreeClassrooms: string;
+  doubleLessonNumberFreeClassrooms: number;
 
   constructor(
     private groupsService: GroupsService,
     private doubleLessonsService: DoubleLessonsService,
     private assignmentsService: AssignmentsService,
     private weeksService: WeeksService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private classroomsService: ClassroomsService
   ) {
   }
 
@@ -102,6 +110,10 @@ export class AssignClassesComponent implements OnInit {
     return this.selectedWeek.id === week.id;
   }
 
+  canDisplayTooltip() {
+    return this.doubleLessonNumberFreeClassrooms && this.assignmentDateFreeClassrooms;
+  }
+
   onRemoveAssignment(data: IContextMenuAssignment) {
     this.assignmentsService.removeAssignment(data.id).subscribe(() => {
       const { start, end } = this.getFormattedStartEnd(this.selectedWeek.start, this.selectedWeek.end);
@@ -109,6 +121,18 @@ export class AssignClassesComponent implements OnInit {
         this.assignments = assignments;
       });
     }, error => console.error(error));
+  }
+
+  onGetAvailableClassrooms(data: { assignmentDate: string, doubleLesson: IDoubleLesson }) {
+    this.modalService.open(GetAvailableClassroomsModalComponent, { size: 'lg' }, data)
+      .then((res) => {
+        this.classroomsService.getFreeClassrooms(res.facultyId, res.doubleLessonId, res.assignmentDate)
+          .subscribe(classrooms => {
+            this.assignmentDateFreeClassrooms = moment(data.assignmentDate).format('YYYY-MM-DD');
+            this.doubleLessonNumberFreeClassrooms = data.doubleLesson.number;
+            this.freeClassrooms = classrooms;
+          }, error => console.error(error));
+      });
   }
 
   private getFormattedStartEnd(start: string, end: string): { start: string, end: string } {
