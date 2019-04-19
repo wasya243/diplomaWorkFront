@@ -1,0 +1,30 @@
+@import "variables";
+@import "shared-styles";
+
+.app-card-header {
+  @extend .card-header;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.app-card-title {
+  @extend .card-title;
+  font-size: 18px;
+}
+
+.app-card-body {
+  @extend .card-body;
+  padding: 8px;
+}
+
+.app-card-text {
+  @extend .card-text;
+  font-size: 14px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.important-text {
+  color: #ffc107;
+  font-weight: bold;
+}

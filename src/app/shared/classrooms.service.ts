@@ -22,6 +22,16 @@ export class ClassroomsService {
     return this.http.get<IClassroom[]>(`/faculties/${facultyId}/classrooms`);
   }
 
+  getFreeClassrooms(facultyId: number, doubleLessonId: number, assignmentDate: string): Observable<Array<IClassroom>> {
+    return this.http.get<Array<IClassroom>>(`/free-classrooms`, {
+      params: {
+        facultyId: facultyId.toString(),
+        doubleLessonId: doubleLessonId.toString(),
+        assignmentDate
+      }
+    });
+  }
+
   removeClassroom(id: number): Observable<{}> {
     return this.http.delete(`/classrooms/${id}`);
   }

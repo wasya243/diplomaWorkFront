@@ -1,12 +1,34 @@
-<div>
-  <div class="assignment-table-container">
-    <app-assignments-table
-      [doubleLessons]="doubleLessons"
-      [groups]="groups"
-      [assignment]="assignment"
-      (removeAssignment)="onRemoveAssignment($event)"
-      *ngFor="let assignment of assignments"
-    ></app-assignments-table>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="assignment-table-container position-relative">
+        <app-assignments-table
+          [doubleLessons]="doubleLessons"
+          [groups]="groups"
+          [assignment]="assignment"
+          (removeAssignment)="onRemoveAssignment($event)"
+          (getAvailableClassrooms)="onGetAvailableClassrooms($event)"
+          *ngFor="let assignment of assignments"
+        ></app-assignments-table>
+      </div>
+    </div>
+    <div class="col-3">
+      <ng-template #tipContent>
+        <div *ngIf="canDisplayTooltip()">
+          <span>Date: {{assignmentDateFreeClassrooms}}</span><br>
+          <span>Double lesson: {{doubleLessonNumberFreeClassrooms}}</span>
+        </div>
+      </ng-template>
+      <div class="free-classrooms-list-header bg-warning" [ngbTooltip]="tipContent">
+        <span>List of free classrooms</span>
+      </div>
+      <div class="free-classrooms-container">
+        <app-free-classroom-card
+          *ngFor="let classroom of freeClassrooms"
+          [classroom]="classroom"
+        ></app-free-classroom-card>
+      </div>
+    </div>
   </div>
   <div class="mt-2">
     <div><span class="header">Weeks</span></div>

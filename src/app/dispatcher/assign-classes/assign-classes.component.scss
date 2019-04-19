@@ -11,6 +11,12 @@
   overflow-y: scroll;
 }
 
+.free-classrooms-container {
+  height: calc(700px - 40px - 4.25rem);
+  overflow-y: scroll;
+  background-color: white;
+}
+
 .header {
   font-weight: bold;
   font-style: normal;
@@ -19,4 +25,12 @@
   letter-spacing: -0.4px;
   color: #0a131c;
   margin-bottom: 1.250rem;
+}
+
+.free-classrooms-list-header {
+  padding: 8px;
+  font-weight: bold;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-size: 16px;
 }

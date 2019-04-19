@@ -8,7 +8,7 @@
     <th>{{doubleLesson.number}}</th>
     <th
       *ngFor="let group of groups"
-      (contextmenu)="onRightClick($event, getAssignment(doubleLesson, group))"
+      (contextmenu)="onRightClick($event, group, doubleLesson, getAssignment(doubleLesson, group))"
     >{{getAssignment(doubleLesson, group).classroom.number}}
     </th>
   </tr>
@@ -17,7 +17,10 @@
       [x]="contextmenuX"
       [y]="contextmenuY"
       [assignment]="selectedAssignment"
+      [assignmentDate]="assignment.assignmentDate"
+      [doubleLesson]="selectedDoubleLesson"
       (deleteAssignment)="onDeleteAssignment($event)"
+      (getAvailableClassrooms)="onGetAvailableClassrooms($event)"
     ></app-assignment-contextmenu>
   </div>
 </table>
