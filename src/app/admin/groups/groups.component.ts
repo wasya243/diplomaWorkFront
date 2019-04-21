@@ -6,6 +6,7 @@ import { ModalService } from '../../shared/modal/modal.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { DeleteGroupModalComponent } from './delete-group-modal/delete-group-modal.component';
 import { UpdateGroupModalComponent } from './update-group-modal/update-group-modal.component';
+import { CreateGroupModalComponent } from './create-group-modal/create-group-modal.component';
 
 import IGroup = diploma.IGroup;
 
@@ -34,13 +35,13 @@ export class GroupsComponent implements OnInit {
 
   ngOnInit() {
     this.getGroups();
-    // this.facultiesService.onInitFacultyCreationSubject().subscribe(async () => {
-    //   this.modalService.open(CreateFacultyModalComponent, { size: 'lg' })
-    //     .then(() => {
-    //       this.getGroups();
-    //     })
-    //     .catch(error => console.error(error));
-    // });
+    this.groupsService.onInitGroupCreationSubject().subscribe(async () => {
+      this.modalService.open(CreateGroupModalComponent, { size: 'lg' })
+        .then(() => {
+          this.getGroups();
+        })
+        .catch(error => console.error(error));
+    });
   }
 
   onSortChange(sortData: IGridSortableColumnData) {

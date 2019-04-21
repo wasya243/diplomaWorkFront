@@ -24,7 +24,7 @@
             <label for="amountOfPeople" class="app-login-input-label">Amount of people</label>
           </div>
           <div class="col-9">
-            <input type="text" class="app-form-control app-error-border" placeholder="Amount of people"
+            <input type="number" class="app-form-control app-error-border" placeholder="Amount of people"
                    id="amountOfPeople"
                    formControlName="amountOfPeople">
           </div>
@@ -57,15 +57,21 @@
         </div>
       </app-form-validation>
 
-      <app-form-validation [validationElement]="groupForm.get('faculty')" [offset]="3">
-        <div class="row mt-30px">
+      <app-form-validation [validationElement]="groupForm.get('facultyId')" [offset]="3">
+        <div class="row mt-20px">
           <div class="col-3 modal-body__label-wrapper">
-            <label for="faculty" class="app-login-input-label">Faculty</label>
+            <label class="app-login-input-label w-100">Faculty</label>
           </div>
           <div class="col-9">
-            <input type="text" class="app-form-control app-error-border" placeholder="Faculty"
-                   id="faculty"
-                   formControlName="faculty">
+            <select class="app-form-control" formControlName="facultyId">
+              <option
+                class="label"
+                *ngFor="let faculty of faculties"
+                [ngValue]="faculty.id"
+              >
+                {{faculty.name}}
+              </option>
+            </select>
           </div>
         </div>
       </app-form-validation>
