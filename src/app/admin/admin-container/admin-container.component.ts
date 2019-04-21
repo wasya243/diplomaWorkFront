@@ -38,6 +38,14 @@ const navigationConfigs: INavigationBarConfig[] = [
     routeName: 'requests',
     routeNavigateTo: '../admin/requests',
     modalToInvoke: 'createRequestModal'
+  },
+  {
+    headerName: 'Groups',
+    labelName: 'Groups list',
+    buttonName: 'Add group',
+    routeName: 'groups',
+    routeNavigateTo: '../admin/groups',
+    modalToInvoke: 'createGroupModal'
   }
 ];
 

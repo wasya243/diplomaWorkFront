@@ -6,6 +6,7 @@ import { AdminContainerComponent } from './admin-container/admin-container.compo
 import { ClassroomsComponent } from './classrooms/classrooms.component';
 import { FacultiesComponent } from './faculties/faculties.component';
 import { UsersComponent } from './users/users.component';
+import { GroupsComponent } from './groups/groups.component';
 import { RegistrationRequestsComponent } from './registration-requests/registration-requests.component';
 import { MasterGuard } from '../auth/master-guard.service';
 import { AuthService } from '../auth/auth.service';
@@ -39,6 +40,10 @@ const superAdminRoutes: Routes = [
       {
         path: 'requests',
         component: RegistrationRequestsComponent
+      },
+      {
+        path: 'groups',
+        component: GroupsComponent
       }
     ]
   }

@@ -1,0 +1,79 @@
+<div class="modal-header">
+  <h4 class="modal-header__wrapper">Edit Group</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <form [formGroup]="groupForm">
+
+      <app-form-validation [validationElement]="groupForm.get('name')" [offset]="3">
+        <div class="row">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="name" class="app-login-input-label">Name</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Name"
+                   id="name"
+                   formControlName="name">
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="groupForm.get('amountOfPeople')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="amountOfPeople" class="app-login-input-label">Amount of people</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Amount of people"
+                   id="amountOfPeople"
+                   formControlName="amountOfPeople">
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="groupForm.get('yearStart')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="yearStart" class="app-login-input-label">Start year</label>
+          </div>
+          <div class="col-9">
+            <input type="number" class="app-form-control app-error-border" placeholder="Start year"
+                   id="yearStart"
+                   formControlName="yearStart">
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="groupForm.get('yearEnd')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="yearEnd" class="app-login-input-label">End year</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="End year"
+                   id="yearEnd"
+                   formControlName="yearEnd">
+          </div>
+        </div>
+      </app-form-validation>
+
+      <app-form-validation [validationElement]="groupForm.get('faculty')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="faculty" class="app-login-input-label">Faculty</label>
+          </div>
+          <div class="col-9">
+            <input type="text" class="app-form-control app-error-border" placeholder="Faculty"
+                   id="faculty"
+                   formControlName="faculty">
+          </div>
+        </div>
+      </app-form-validation>
+
+      <div class="d-flex justify-content-between custom-footer">
+        <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
+        <button (click)="save()" class="btn btn-primary" [disabled]="!groupForm.valid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

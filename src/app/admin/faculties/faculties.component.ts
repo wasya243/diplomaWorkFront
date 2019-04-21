@@ -63,7 +63,6 @@ export class FacultiesComponent implements OnInit {
   }
 
   onRemoveFaculty(clickedRow: IFaculty): void {
-    console.log(clickedRow);
     this.modalService.open(DeleteFacultyModalComponent, { size: 'sm' }, clickedRow)
       .then((id) => {
         this.faculties.items = this.faculties.items.filter((faculty: IFaculty) => faculty.id !== id);

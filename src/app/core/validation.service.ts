@@ -9,6 +9,8 @@ export class ValidationService {
       invalidPassword: 'Invalid password',
       minlength: `Minimum length ${validatorValue.requiredLength}`,
       maxlength: `Maximum length ${validatorValue.requiredLength}`,
+      invalidGroupYear: `Year cannot be a negative number`,
+      invalidAmountOfPeople: `Amount of people cannot be 0 or less than 0`
     };
 
     return config[ validatorName ];
@@ -22,6 +24,22 @@ export class ValidationService {
       return null;
     } else {
       return { invalidEmailAddress: true };
+    }
+  }
+
+  static groupYearValidator(control: FormControl) {
+    if (control.value > 0) {
+      return null;
+    } else {
+      return { invalidGroupYear: true };
+    }
+  }
+
+  static amountOfPeopleValidator(control: FormControl) {
+    if (control.value > 0) {
+      return null;
+    } else {
+      return { invalidAmountOfPeople: true };
     }
   }
 }
