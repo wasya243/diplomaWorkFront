@@ -10,7 +10,6 @@ export class ModalService {
     centered: true
   };
   private activeModal: any;
-  private data: any;
 
   constructor(
     private ngbModal: NgbModal
@@ -24,13 +23,8 @@ export class ModalService {
     }
     const extendedConfig = { ...this.defaultConfig, ...config };
     this.activeModal = this.ngbModal.open(content, extendedConfig);
-    // data && (this.activeModal.componentInstance.data = data);
-    this.data = data;
+    data && (this.activeModal.componentInstance.data = data);
     return this.activeModal.result;
-  }
-
-  getPassedData() {
-    return this.data;
   }
 
   dismiss(data?) {

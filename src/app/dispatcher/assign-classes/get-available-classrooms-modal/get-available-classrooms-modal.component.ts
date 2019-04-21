@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ModalService } from '../../../shared/modal/modal.service';
@@ -8,6 +8,11 @@ import { FormattingService } from '../../../shared/formatting.service';
 import IDoubleLesson = diploma.IDoubleLesson;
 import IFaculty = diploma.IFaculty;
 
+interface IPassedData {
+  doubleLesson: IDoubleLesson;
+  assignmentDate: string;
+}
+
 @Component({
   selector: 'app-get-available-classrooms-modal',
   templateUrl: './get-available-classrooms-modal.component.html',
@@ -15,8 +20,7 @@ import IFaculty = diploma.IFaculty;
 })
 export class GetAvailableClassroomsModalComponent implements OnInit, AfterViewInit {
 
-  assignmentDate: string;
-  doubleLesson: IDoubleLesson;
+  @Input() data: IPassedData;
   faculties: Array<IFaculty> = [];
   getAvailableClassroomsForm: FormGroup;
 
@@ -26,11 +30,6 @@ export class GetAvailableClassroomsModalComponent implements OnInit, AfterViewIn
     private formattingService: FormattingService,
     private fb: FormBuilder
   ) {
-    this.getAvailableClassroomsForm = this.fb.group({
-      facultyId: [ null, [ Validators.required ] ],
-      assignmentDate: [ { value: null, disabled: true } ],
-      doubleLesson: [ { value: null, disabled: true } ]
-    });
   }
 
   ngOnInit() {
@@ -38,18 +37,25 @@ export class GetAvailableClassroomsModalComponent implements OnInit, AfterViewIn
       .subscribe(faculties => {
         this.faculties = faculties;
       }, error => console.error(error));
+
+    const passedData = this.data;
+    this.getAvailableClassroomsForm = this.fb.group({
+      facultyId: [ null, [ Validators.required ] ],
+      assignmentDate: [ { value: this.formattingService.formatDate(passedData.assignmentDate, 'YYYY-MM-DD'), disabled: true } ],
+      doubleLesson: [ { value: passedData.doubleLesson.number, disabled: true } ]
+    });
   }
 
   ngAfterViewInit() {
-    const passedData = this.modalService.getPassedData();
-
-    this.assignmentDate = passedData.assignmentDate;
-    this.doubleLesson = passedData.doubleLesson;
-
-    this.getAvailableClassroomsForm.patchValue({
-      assignmentDate: this.formattingService.formatDate(this.assignmentDate, 'YYYY-MM-DD'),
-      doubleLesson: this.doubleLesson.number
-    });
+    // const passedData = this.modalService.getPassedData();
+    //
+    // this.assignmentDate = passedData.assignmentDate;
+    // this.doubleLesson = passedData.doubleLesson;
+    //
+    // this.getAvailableClassroomsForm.patchValue({
+    //   assignmentDate: this.formattingService.formatDate(this.assignmentDate, 'YYYY-MM-DD'),
+    //   doubleLesson: this.doubleLesson.number
+    // });
   }
 
   cancel(): void {
@@ -58,9 +64,9 @@ export class GetAvailableClassroomsModalComponent implements OnInit, AfterViewIn
 
   save(): void {
     const requestObject = {
-      doubleLessonId: this.doubleLesson.id,
+      doubleLessonId: this.data.doubleLesson.id,
       facultyId: this.getAvailableClassroomsForm.value.facultyId,
-      assignmentDate: this.formattingService.formatDate(this.assignmentDate, 'YYYY-MM-DD')
+      assignmentDate: this.formattingService.formatDate(this.data.assignmentDate, 'YYYY-MM-DD')
     };
     this.modalService.apply(requestObject);
   }
