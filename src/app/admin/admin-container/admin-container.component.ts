@@ -5,6 +5,7 @@ import { FacultiesService } from '../../shared/faculties.service';
 import { ClassroomsService } from '../../shared/classrooms.service';
 
 import INavigationBarConfig = diploma.INavigationBarConfig;
+import { GroupsService } from '../../shared/groups.service';
 
 const navigationConfigs: INavigationBarConfig[] = [
   {
@@ -62,7 +63,8 @@ export class AdminContainerComponent implements OnInit {
   constructor(
     private router: Router,
     private facultiesService: FacultiesService,
-    private classroomsService: ClassroomsService
+    private classroomsService: ClassroomsService,
+    private groupsService: GroupsService
   ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -85,6 +87,9 @@ export class AdminContainerComponent implements OnInit {
         break;
       case 'createUserModal':
         console.log(modalName);
+        break;
+      case 'createGroupModal':
+        this.groupsService.initGroupCreation();
         break;
     }
   }

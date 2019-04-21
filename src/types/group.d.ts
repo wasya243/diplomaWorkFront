@@ -17,4 +17,12 @@ declare namespace diploma {
     amountOfPeople: number;
     name: string;
   }
+
+  interface ICreateGroup {
+    yearStart: number;
+    yearEnd: number;
+    amountOfPeople: number;
+    name: string;
+    facultyId: number;
+  }
 }
