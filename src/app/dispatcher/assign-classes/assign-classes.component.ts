@@ -19,6 +19,8 @@ import IGroup = diploma.IGroup;
 import IContextMenuAssignment = diploma.IContextMenuAssignment;
 import IWeek = diploma.IWeek;
 import IClassroom = diploma.IClassroom;
+import IUserData = diploma.IUserData;
+import { StorageService } from '../../core/storage.service';
 
 @Component({
   selector: 'app-assign-classes',
@@ -36,6 +38,8 @@ export class AssignClassesComponent implements OnInit {
   // this props is used to display info in free classrooms list header
   assignmentDateFreeClassrooms: string;
   doubleLessonNumberFreeClassrooms: number;
+  // this is used to fetch appropriate groups
+  userData: IUserData;
 
   constructor(
     private groupsService: GroupsService,
@@ -43,8 +47,10 @@ export class AssignClassesComponent implements OnInit {
     private assignmentsService: AssignmentsService,
     private weeksService: WeeksService,
     private modalService: ModalService,
-    private classroomsService: ClassroomsService
+    private classroomsService: ClassroomsService,
+    private storageService: StorageService
   ) {
+    this.userData = this.storageService.get('user', true) as IUserData;
   }
 
   ngOnInit() {
@@ -155,7 +161,7 @@ export class AssignClassesComponent implements OnInit {
   }
 
   private getGroups() {
-    return this.groupsService.getGroups();
+    return this.groupsService.getGroupsByFaculty(this.userData.userInfo.facultyId);
   }
 
   private getDoubleLessons() {

@@ -24,6 +24,7 @@ import { CreateClassroomModalComponent } from './classrooms/create-classroom-mod
 import { RegistrationRequestsComponent } from './registration-requests/registration-requests.component';
 import { ReviewRegistrationRequestModalComponent } from './registration-requests/review-registration-request-modal/review-registration-request-modal.component';
 import { PermitRegistrationRequestComponent } from './registration-requests/permit-registration-request/permit-registration-request.component';
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { PermitRegistrationRequestComponent } from './registration-requests/perm
     CreateClassroomModalComponent,
     RegistrationRequestsComponent,
     ReviewRegistrationRequestModalComponent,
-    PermitRegistrationRequestComponent ],
+    PermitRegistrationRequestComponent,
+    GroupsComponent ],
   entryComponents: [
     UpdateUserModalComponent,
     DeleteUserModalComponent,

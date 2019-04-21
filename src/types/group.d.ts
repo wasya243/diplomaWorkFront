@@ -3,6 +3,9 @@ declare namespace diploma {
     id: number;
     name: string;
     amountOfPeople: number;
-    facultyId: number;
+    faculty: {
+      id: number;
+      name: string;
+    };
   }
 }

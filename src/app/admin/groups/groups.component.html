@@ -1,0 +1,31 @@
+<app-grid
+  [items]="groups.items"
+  [expandable]="false"
+  (onSortChange)="onSortChange($event)"
+>
+  <ng-template #gridHeadTemplate>
+    <div class="d-flex w-100">
+      <app-grid-head-cell class="col-3" sortName="name">Name</app-grid-head-cell>
+      <app-grid-head-cell class="col-3" sortName="amountOfPeople">Amount of People</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="faculty">Faculty</app-grid-head-cell>
+      <app-grid-head-cell class=""></app-grid-head-cell>
+    </div>
+  </ng-template>
+  <ng-template #gridRowTemplate let-item="item">
+    <div class="d-flex w-100">
+      <app-grid-row-cell class="col-3">{{ item.name }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-3">{{ item.amountOfPeople }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.faculty.name }}</app-grid-row-cell>
+      <app-grid-row-cell class="d-flex justify-content-end">
+        <div class="d-flex">
+          <div class="edit-btn app-control-btn" (click)="onEditGroup(item)">
+            <fa-icon [icon]="pencilAltIcon"></fa-icon>
+          </div>
+          <div class="remove-btn app-control-btn" (click)="onRemoveGroup(item)">
+            <fa-icon [icon]="trashIcon"></fa-icon>
+          </div>
+        </div>
+      </app-grid-row-cell>
+    </div>
+  </ng-template>
+</app-grid>
