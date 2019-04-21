@@ -3,6 +3,9 @@ import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { GroupsService } from '../../shared/groups.service';
 import { ModalService } from '../../shared/modal/modal.service';
+import { IGridSortableColumnData } from '../../shared/grid/grid.module';
+import { DeleteGroupModalComponent } from './delete-group-modal/delete-group-modal.component';
+import { UpdateGroupModalComponent } from './update-group-modal/update-group-modal.component';
 
 import IGroup = diploma.IGroup;
 
@@ -40,12 +43,36 @@ export class GroupsComponent implements OnInit {
     // });
   }
 
-  onEditGroup(group) {
-    console.log(group);
+  onSortChange(sortData: IGridSortableColumnData) {
+    console.log(sortData);
+    // TODO: return back when respective functionality is implemented on the backend
+    // this.usersService.getUsers(sortData)
+    //   .subscribe(data => {
+    //     this.users.items = data;
+    //   });
   }
 
-  onRemoveGroup(group) {
-    console.log(group);
+  onEditGroup(clickedRow: IGroup) {
+    this.modalService.open(UpdateGroupModalComponent, { size: 'sm' }, clickedRow)
+      .then(data => {
+        this.groups.items.map(
+          (group: IGroup) => {
+            return group.id === (data as IGroup).id && Object.assign(group, data);
+          });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+  onRemoveGroup(clickedRow: IGroup) {
+    this.modalService.open(DeleteGroupModalComponent, { size: 'sm' }, clickedRow)
+      .then((id) => {
+        this.groups.items = this.groups.items.filter((group: IGroup) => group.id !== id);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   private getGroups(): void {

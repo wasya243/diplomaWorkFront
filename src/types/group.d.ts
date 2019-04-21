@@ -8,4 +8,9 @@ declare namespace diploma {
       name: string;
     };
   }
+
+  interface IUpdateGroup {
+    amountOfPeople: number;
+    name: string;
+  }
 }
