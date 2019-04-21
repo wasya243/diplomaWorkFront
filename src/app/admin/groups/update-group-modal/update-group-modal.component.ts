@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ModalService } from '../../../shared/modal/modal.service';
 import { GroupsService } from '../../../shared/groups.service';
+import { ValidationService } from '../../../core/validation.service';
 
 import IGroup = diploma.IGroup;
 
@@ -27,7 +28,9 @@ export class UpdateGroupModalComponent implements OnInit {
   ngOnInit() {
     this.groupForm = this.fb.group({
       name: [ this.data.name, [ Validators.required ] ],
-      amountOfPeople: [ this.data.amountOfPeople, [ Validators.required ] ],
+      amountOfPeople: [ this.data.amountOfPeople, [ Validators.required, ValidationService.amountOfPeopleValidator ] ],
+      yearStart: [ this.data.yearStart, [ Validators.required, ValidationService.groupYearValidator ] ],
+      yearEnd: [ this.data.yearEnd, [ Validators.required, ValidationService.groupYearValidator ] ],
       faculty: [ { value: this.data.faculty.name, disabled: true }, [ Validators.required ] ],
     });
   }
@@ -41,7 +44,9 @@ export class UpdateGroupModalComponent implements OnInit {
 
     const dataToUpdate = {
       amountOfPeople: formValue.amountOfPeople,
-      name: formValue.name
+      name: formValue.name,
+      yearStart: formValue.yearStart,
+      yearEnd: formValue.yearEnd
     };
 
     this.groupsService.updateGroup(this.data.id, dataToUpdate)

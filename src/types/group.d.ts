@@ -3,6 +3,8 @@ declare namespace diploma {
     id: number;
     name: string;
     amountOfPeople: number;
+    yearStart: number;
+    yearEnd: number;
     faculty: {
       id: number;
       name: string;
@@ -10,6 +12,8 @@ declare namespace diploma {
   }
 
   interface IUpdateGroup {
+    yearStart: number;
+    yearEnd: number;
     amountOfPeople: number;
     name: string;
   }
