@@ -41,6 +41,7 @@ export class GetAvailableClassroomsModalComponent implements OnInit, AfterViewIn
     const passedData = this.data;
     this.getAvailableClassroomsForm = this.fb.group({
       facultyId: [ null, [ Validators.required ] ],
+      amountOfSeats: [ null, [ Validators.required ] ],
       assignmentDate: [ { value: this.formattingService.formatDate(passedData.assignmentDate, 'YYYY-MM-DD'), disabled: true } ],
       doubleLesson: [ { value: passedData.doubleLesson.number, disabled: true } ]
     });
@@ -65,6 +66,7 @@ export class GetAvailableClassroomsModalComponent implements OnInit, AfterViewIn
   save(): void {
     const requestObject = {
       doubleLessonId: this.data.doubleLesson.id,
+      amountOfSeats: this.getAvailableClassroomsForm.value.amountOfSeats,
       facultyId: this.getAvailableClassroomsForm.value.facultyId,
       assignmentDate: this.formattingService.formatDate(this.data.assignmentDate, 'YYYY-MM-DD')
     };

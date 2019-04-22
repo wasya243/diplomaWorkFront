@@ -132,7 +132,7 @@ export class AssignClassesComponent implements OnInit {
   onGetAvailableClassrooms(data: { assignmentDate: string, doubleLesson: IDoubleLesson }) {
     this.modalService.open(GetAvailableClassroomsModalComponent, { size: 'lg' }, data)
       .then((res) => {
-        this.classroomsService.getFreeClassrooms(res.facultyId, res.doubleLessonId, res.assignmentDate)
+        this.classroomsService.getFreeClassrooms(res.facultyId, res.doubleLessonId, res.assignmentDate, res.amountOfSeats)
           .subscribe(classrooms => {
             this.assignmentDateFreeClassrooms = moment(data.assignmentDate).format('YYYY-MM-DD');
             this.doubleLessonNumberFreeClassrooms = data.doubleLesson.number;

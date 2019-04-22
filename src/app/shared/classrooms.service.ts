@@ -22,11 +22,12 @@ export class ClassroomsService {
     return this.http.get<IClassroom[]>(`/faculties/${facultyId}/classrooms`);
   }
 
-  getFreeClassrooms(facultyId: number, doubleLessonId: number, assignmentDate: string): Observable<Array<IClassroom>> {
+  getFreeClassrooms(facultyId: number, doubleLessonId: number, assignmentDate: string, amountOfSeats: number): Observable<Array<IClassroom>> {
     return this.http.get<Array<IClassroom>>(`/free-classrooms`, {
       params: {
         facultyId: facultyId.toString(),
         doubleLessonId: doubleLessonId.toString(),
+        amountOfSeats: amountOfSeats.toString(),
         assignmentDate
       }
     });

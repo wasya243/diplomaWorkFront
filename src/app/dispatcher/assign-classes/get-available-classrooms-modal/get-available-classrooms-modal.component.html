@@ -54,6 +54,19 @@
         </div>
       </app-form-validation>
 
+      <app-form-validation [validationElement]="getAvailableClassroomsForm.get('amountOfSeats')" [offset]="3">
+        <div class="row mt-30px">
+          <div class="col-3 modal-body__label-wrapper">
+            <label for="amountOfSeats" class="app-login-input-label">Amount of seats (more than)</label>
+          </div>
+          <div class="col-9">
+            <input type="number" class="app-form-control app-error-border" placeholder="Amount of seats"
+                   id="amountOfSeats"
+                   formControlName="amountOfSeats">
+          </div>
+        </div>
+      </app-form-validation>
+
       <div class="d-flex justify-content-between custom-footer">
         <button (click)="cancel()" class="btn btn-outline-secondary">Cancel</button>
         <button (click)="save()" class="btn btn-primary" [disabled]="!getAvailableClassroomsForm.valid">Get List
