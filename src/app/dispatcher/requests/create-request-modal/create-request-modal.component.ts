@@ -9,6 +9,7 @@ import { FacultiesService } from '../../../shared/faculties.service';
 import { ClassroomsService } from '../../../shared/classrooms.service';
 import { DoubleLessonsService } from '../../../shared/double-lessons.service';
 import { StorageService } from '../../../core/storage.service';
+import { AlertService } from '../../../shared/alert/alert.service';
 
 import IUserData = diploma.IUserData;
 import IProcessedFaculty = diploma.IProcessedFaculty;
@@ -38,7 +39,8 @@ export class CreateRequestModalComponent implements OnInit {
     private facultiesService: FacultiesService,
     private classroomService: ClassroomsService,
     private doubleLessonsService: DoubleLessonsService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private alertService: AlertService
   ) {
     this.userData = this.storageService.get('user', true) as IUserData;
     this.requestForm = this.fb.group({
@@ -119,7 +121,7 @@ export class CreateRequestModalComponent implements OnInit {
           this.modalService.apply(createdRequest);
         },
         error => {
-          console.error(error);
+          this.alertService.error(error.error.data ? error.error.data : 'Bad request', 5000);
         });
   }
 

@@ -5,12 +5,12 @@ import { mergeMap } from 'rxjs/operators';
 
 import { DoubleLessonsService } from '../../shared/double-lessons.service';
 import { GroupsService } from '../../shared/groups.service';
-import { AssignmentsService } from './assignments.service';
 import { ClassroomsService } from '../../shared/classrooms.service';
 import { GetAvailableClassroomsModalComponent } from './get-available-classrooms-modal/get-available-classrooms-modal.component';
 import { CreateAssignmentModalComponent } from './create-assignment-modal/create-assignment-modal.component';
 import { ModalService } from '../../shared/modal/modal.service';
 import { WeeksService } from './weeks.service';
+import { AlertService } from '../../shared/alert/alert.service';
 
 import IAssignment = diploma.IAssignment;
 import ICreatedAssignment = diploma.ICreatedAssignment;
@@ -21,6 +21,7 @@ import IWeek = diploma.IWeek;
 import IClassroom = diploma.IClassroom;
 import IUserData = diploma.IUserData;
 import { StorageService } from '../../core/storage.service';
+import { AssignmentsService } from './assignments.service';
 
 @Component({
   selector: 'app-assign-classes',
@@ -44,11 +45,11 @@ export class AssignClassesComponent implements OnInit {
   constructor(
     private groupsService: GroupsService,
     private doubleLessonsService: DoubleLessonsService,
-    private assignmentsService: AssignmentsService,
     private weeksService: WeeksService,
     private modalService: ModalService,
     private classroomsService: ClassroomsService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private assignmentsService: AssignmentsService
   ) {
     this.userData = this.storageService.get('user', true) as IUserData;
   }

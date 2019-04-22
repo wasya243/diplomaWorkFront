@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { GridModule } from './grid/grid.module';
 import { ModalModule } from './modal/modal.module';
+import { AlertModule } from './alert/alert.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ModalModule } from './modal/modal.module';
     FontAwesomeModule,
     GridModule,
     RouterModule,
-    ModalModule
+    ModalModule,
+    AlertModule
   ],
   declarations: [
     FormValidationComponent,
@@ -33,7 +35,8 @@ import { ModalModule } from './modal/modal.module';
     NavigationBarComponent,
     HeaderComponent,
     FontAwesomeModule,
-    ModalModule
+    ModalModule,
+    AlertModule
   ],
   providers: [
     FormattingService,

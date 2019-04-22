@@ -11,6 +11,7 @@ import { StorageService } from '../../../core/storage.service';
 import { AssignmentsService } from '../assignments.service';
 import { DoubleLessonsService } from '../../../shared/double-lessons.service';
 import { GroupsService } from '../../../shared/groups.service';
+import { AlertService } from '../../../shared/alert/alert.service';
 
 import IUserData = diploma.IUserData;
 import IFaculty = diploma.IFaculty;
@@ -43,7 +44,8 @@ export class CreateAssignmentModalComponent implements OnInit {
     private assignmentService: AssignmentsService,
     private storageService: StorageService,
     private modalService: ModalService,
-    private doubleLessonsService: DoubleLessonsService
+    private doubleLessonsService: DoubleLessonsService,
+    private alertService: AlertService
   ) {
     this.userData = this.storageService.get('user', true) as IUserData;
     this.assignmentForm = this.fb.group({
@@ -131,7 +133,7 @@ export class CreateAssignmentModalComponent implements OnInit {
     this.assignmentService.createAssignment(requestObject)
       .subscribe((createdAssignment) => {
         this.modalService.apply(createdAssignment);
-      }, error => console.error(error));
+      }, error => this.alertService.error(error.error.data ? error.error.data : 'Bad request', 5000));
   }
 
 }

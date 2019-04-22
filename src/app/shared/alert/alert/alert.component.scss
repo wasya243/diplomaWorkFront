@@ -1,0 +1,43 @@
+.my-alert {
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.75rem 0 0.75rem 1.0rem !important;
+}
+
+
+.alert-success {
+  background-color: #59a97c;
+}
+
+.alert-danger {
+  background-color: #c94c4c;
+}
+
+.alert-warning {
+  background-color: #e59400;
+}
+
+.alert-info {
+  background-color: #90c8f5;
+}
+
+.wrapper {
+  position: fixed;
+  z-index: 9;
+  right: 3rem;
+  top: 4rem;
+  width: auto;
+  height: auto;
+  font-size: 0.875rem;
+}
+
+span, i {
+  margin: 0 0.9375rem 0 0;
+}
+
+i.fa.fa-times-circle.fa-lg {
+  cursor: pointer;
+}

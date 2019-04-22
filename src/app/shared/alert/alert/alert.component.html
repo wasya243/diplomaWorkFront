@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <div *ngFor="let alert of alerts" class="{{getCssClassName(alert, 'alert') }} alert-dismissable my-alert">
+    <i class="{{getCssClassName(alert, 'notificationIcon')}} fa-lg" aria-hidden="true"></i>
+    <span>{{alert.message}}</span>
+    <i class="fa fa-times-circle fa-lg" (click)="removeAlert(alert)"></i>
+  </div>
+</div>
