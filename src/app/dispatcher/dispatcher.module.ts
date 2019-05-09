@@ -25,6 +25,10 @@ import { CreateAssignmentModalComponent } from './assign-classes/create-assignme
 import { AssignmentContextmenuComponent } from './assignments-table/assignment-contextmenu/assignment-contextmenu.component';
 import { GetAvailableClassroomsModalComponent } from './assign-classes/get-available-classrooms-modal/get-available-classrooms-modal.component';
 import { FreeClassroomCardComponent } from './assign-classes/free-classroom-card/free-classroom-card.component';
+import { GroupsComponent } from './groups/groups.component';
+import { CreateGroupModalComponent } from './groups/create-group-modal/create-group-modal.component';
+import { UpdateGroupModalComponent } from './groups/update-group-modal/update-group-modal.component';
+import { DeleteGroupModalComponent } from './groups/delete-group-modal/delete-group-modal.component';
 
 @NgModule({
   imports: [
@@ -51,7 +55,11 @@ import { FreeClassroomCardComponent } from './assign-classes/free-classroom-card
     CreateAssignmentModalComponent,
     AssignmentContextmenuComponent,
     GetAvailableClassroomsModalComponent,
-    FreeClassroomCardComponent
+    FreeClassroomCardComponent,
+    GroupsComponent,
+    CreateGroupModalComponent,
+    UpdateGroupModalComponent,
+    DeleteGroupModalComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,
@@ -59,7 +67,10 @@ import { FreeClassroomCardComponent } from './assign-classes/free-classroom-card
     CreateRequestModalComponent,
     GenerateReportModalComponent,
     CreateAssignmentModalComponent,
-    GetAvailableClassroomsModalComponent
+    GetAvailableClassroomsModalComponent,
+    CreateGroupModalComponent,
+    UpdateGroupModalComponent,
+    DeleteGroupModalComponent
   ],
   providers: [
     RequestsService,
