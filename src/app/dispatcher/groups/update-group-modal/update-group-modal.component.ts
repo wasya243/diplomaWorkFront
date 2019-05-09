@@ -30,8 +30,7 @@ export class UpdateGroupModalComponent implements OnInit {
       name: [ this.data.name, [ Validators.required ] ],
       amountOfPeople: [ this.data.amountOfPeople, [ Validators.required, ValidationService.amountOfPeopleValidator ] ],
       yearStart: [ this.data.yearStart, [ Validators.required, ValidationService.groupYearValidator ] ],
-      yearEnd: [ this.data.yearEnd, [ Validators.required, ValidationService.groupYearValidator ] ],
-      faculty: [ { value: this.data.faculty.name, disabled: true }, [ Validators.required ] ],
+      yearEnd: [ this.data.yearEnd, [ Validators.required, ValidationService.groupYearValidator ] ]
     });
   }
 

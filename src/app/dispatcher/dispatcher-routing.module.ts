@@ -8,6 +8,7 @@ import { AuthService } from '../auth/auth.service';
 import { AssignClassesComponent } from './assign-classes/assign-classes.component';
 import { RequestsComponent } from './requests/requests.component';
 import { ReportsComponent } from './reports/reports.component';
+import { GroupsComponent } from './groups/groups.component';
 
 const dispatcherRoutes: Routes = [
   {
@@ -34,6 +35,10 @@ const dispatcherRoutes: Routes = [
       {
         path: 'reports',
         component: ReportsComponent
+      },
+      {
+        path: 'groups',
+        component: GroupsComponent
       }
     ]
   }

@@ -3,12 +3,14 @@ import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { GroupsService } from '../../shared/groups.service';
 import { ModalService } from '../../shared/modal/modal.service';
+import { StorageService } from '../../core/storage.service';
 import { IGridSortableColumnData } from '../../shared/grid/grid.module';
 import { DeleteGroupModalComponent } from './delete-group-modal/delete-group-modal.component';
 import { UpdateGroupModalComponent } from './update-group-modal/update-group-modal.component';
 import { CreateGroupModalComponent } from './create-group-modal/create-group-modal.component';
 
 import IGroup = diploma.IGroup;
+import IUser = diploma.IUser;
 
 @Component({
   selector: 'app-groups',
@@ -26,11 +28,14 @@ export class GroupsComponent implements OnInit {
 
   pencilAltIcon = faPencilAlt;
   trashIcon = faTrash;
+  private userData: IUser;
 
   constructor(
     private groupsService: GroupsService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private storageService: StorageService
   ) {
+    this.userData = this.storageService.getUserData().userInfo as IUser;
   }
 
   ngOnInit() {
@@ -77,7 +82,8 @@ export class GroupsComponent implements OnInit {
   }
 
   private getGroups(): void {
-    this.groupsService.getGroups()
+    const facultyId = this.userData.facultyId;
+    this.groupsService.getGroupsByFaculty(facultyId)
       .subscribe((groups) => {
         this.groups.items = groups;
       }, error => console.error(error));

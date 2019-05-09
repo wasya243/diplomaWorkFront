@@ -24,10 +24,6 @@ import { CreateClassroomModalComponent } from './classrooms/create-classroom-mod
 import { RegistrationRequestsComponent } from './registration-requests/registration-requests.component';
 import { ReviewRegistrationRequestModalComponent } from './registration-requests/review-registration-request-modal/review-registration-request-modal.component';
 import { PermitRegistrationRequestComponent } from './registration-requests/permit-registration-request/permit-registration-request.component';
-import { GroupsComponent } from './groups/groups.component';
-import { DeleteGroupModalComponent } from './groups/delete-group-modal/delete-group-modal.component';
-import { UpdateGroupModalComponent } from './groups/update-group-modal/update-group-modal.component';
-import { CreateGroupModalComponent } from './groups/create-group-modal/create-group-modal.component';
 
 @NgModule({
   imports: [
@@ -55,11 +51,8 @@ import { CreateGroupModalComponent } from './groups/create-group-modal/create-gr
     CreateClassroomModalComponent,
     RegistrationRequestsComponent,
     ReviewRegistrationRequestModalComponent,
-    PermitRegistrationRequestComponent,
-    GroupsComponent,
-    DeleteGroupModalComponent,
-    UpdateGroupModalComponent,
-    CreateGroupModalComponent ],
+    PermitRegistrationRequestComponent
+  ],
   entryComponents: [
     UpdateUserModalComponent,
     DeleteUserModalComponent,
@@ -71,10 +64,7 @@ import { CreateGroupModalComponent } from './groups/create-group-modal/create-gr
     UpdateClassroomModalComponent,
     CreateClassroomModalComponent,
     ReviewRegistrationRequestModalComponent,
-    PermitRegistrationRequestComponent,
-    DeleteGroupModalComponent,
-    UpdateGroupModalComponent,
-    CreateGroupModalComponent
+    PermitRegistrationRequestComponent
   ],
   providers: [ UsersService, RegistrationRequestsService ],
   exports: []

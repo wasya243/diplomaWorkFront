@@ -3,6 +3,7 @@ import { Event, NavigationEnd, Router } from '@angular/router';
 
 import { RequestsService } from '../requests/requests.service';
 import { ReportsService } from '../reports/reports.service';
+import { GroupsService } from '../../shared/groups.service';
 import { AssignmentsService } from '../assign-classes/assignments.service';
 
 import INavigationBarConfig = diploma.INavigationBarConfig;
@@ -31,6 +32,14 @@ const navigationConfigs: INavigationBarConfig[] = [
     routeName: 'reports',
     routeNavigateTo: '../dispatcher/reports',
     modalToInvoke: 'generateReportModal'
+  },
+  {
+    headerName: 'Groups',
+    labelName: 'Groups list',
+    buttonName: 'Add group',
+    routeName: 'groups',
+    routeNavigateTo: '../dispatcher/groups',
+    modalToInvoke: 'createGroupModal'
   }
 ];
 
@@ -48,7 +57,8 @@ export class DispatcherContainerComponent implements OnInit {
     private router: Router,
     private requestsService: RequestsService,
     private reportsService: ReportsService,
-    private assignmentsService: AssignmentsService
+    private assignmentsService: AssignmentsService,
+    private groupsService: GroupsService
   ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -71,6 +81,9 @@ export class DispatcherContainerComponent implements OnInit {
         break;
       case 'createAssignmentModal':
         this.assignmentsService.initAssignmentCreation();
+        break;
+      case 'createGroupModal':
+        this.groupsService.initGroupCreation();
         break;
     }
   }
