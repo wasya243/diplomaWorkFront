@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-9">
-      <div class="assignment-table-container position-relative">
+      <div class="assignment-table-container position-relative" (scroll)="onScroll($event)">
         <app-assignments-table
           [doubleLessons]="doubleLessons"
           [groups]="groups"
           [assignment]="assignment"
+          [offsetY]="offsetY"
           (removeAssignment)="onRemoveAssignment($event)"
           (getAvailableClassrooms)="onGetAvailableClassrooms($event)"
           *ngFor="let assignment of assignments"

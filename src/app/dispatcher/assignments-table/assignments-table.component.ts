@@ -16,6 +16,7 @@ export class AssignmentsTableComponent implements OnInit {
   @Input() assignment: IAssignment;
   @Input() doubleLessons: Array<IDoubleLesson>;
   @Input() groups: Array<IGroup>;
+  @Input() offsetY = 0;
   @Output() removeAssignment = new EventEmitter<IContextMenuAssignment>();
   @Output() getAvailableClassrooms = new EventEmitter<any>();
 
@@ -45,9 +46,8 @@ export class AssignmentsTableComponent implements OnInit {
   }
 
   onRightClick(event, group: IGroup, doubleLesson: IDoubleLesson, assignment?: any) {
-    // TODO: calculate offset programmatically instead of hardcoding it
     this.contextmenuX = event.x - 250;
-    this.contextmenuY = event.y - 130;
+    this.contextmenuY = event.y - 130 + this.offsetY;
     this.selectedDoubleLesson = doubleLesson;
     this.selectedAssignment = assignment;
     this.contextmenu = true;
