@@ -41,6 +41,8 @@ export class AssignClassesComponent implements OnInit {
   doubleLessonNumberFreeClassrooms: number;
   // this is used to fetch appropriate groups
   userData: IUserData;
+  // offset y for context menu
+  offsetY = 0;
 
   constructor(
     private groupsService: GroupsService,
@@ -101,6 +103,11 @@ export class AssignClassesComponent implements OnInit {
     // ).subscribe((assignments) => {
     //   this.assignments = assignments;
     // }, error => console.error(error));
+  }
+
+  onScroll(event) {
+    const tableContainer = event.target;
+    this.offsetY = tableContainer.scrollTop;
   }
 
   selectWeek(week) {
