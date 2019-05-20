@@ -5,8 +5,8 @@
 >
   <ng-template #gridHeadTemplate>
     <div class="d-flex w-100">
-      <app-grid-head-cell class="col-3" sortName="name">Name</app-grid-head-cell>
-      <app-grid-head-cell class="col-3" sortName="director">Director</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="name">Name</app-grid-head-cell>
+      <app-grid-head-cell class="col-2" sortName="director">Director</app-grid-head-cell>
       <app-grid-head-cell class="col-2" sortName="address">Address</app-grid-head-cell>
       <app-grid-head-cell class="col-2" sortName="phoneNumber">Phone</app-grid-head-cell>
       <app-grid-head-cell class="col-2" sortName="website">Website</app-grid-head-cell>
@@ -15,8 +15,8 @@
   </ng-template>
   <ng-template #gridRowTemplate let-item="item">
     <div class="d-flex w-100">
-      <app-grid-row-cell class="col-3">{{ item.name }}</app-grid-row-cell>
-      <app-grid-row-cell class="col-3">{{ item.director }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.name }}</app-grid-row-cell>
+      <app-grid-row-cell class="col-2">{{ item.director }}</app-grid-row-cell>
       <app-grid-row-cell class="col-2">{{ item.address }}</app-grid-row-cell>
       <app-grid-row-cell class="col-2">{{ item.phoneNumber}}</app-grid-row-cell>
       <app-grid-row-cell class="col-2">{{ item.website}}</app-grid-row-cell>

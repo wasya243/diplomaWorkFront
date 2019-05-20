@@ -29,6 +29,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { CreateGroupModalComponent } from './groups/create-group-modal/create-group-modal.component';
 import { UpdateGroupModalComponent } from './groups/update-group-modal/update-group-modal.component';
 import { DeleteGroupModalComponent } from './groups/delete-group-modal/delete-group-modal.component';
+import { UpdateAssignmentModalComponent } from './assign-classes/update-assignment-modal/update-assignment-modal.component';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { DeleteGroupModalComponent } from './groups/delete-group-modal/delete-gr
     GroupsComponent,
     CreateGroupModalComponent,
     UpdateGroupModalComponent,
-    DeleteGroupModalComponent
+    DeleteGroupModalComponent,
+    UpdateAssignmentModalComponent
   ],
   entryComponents: [
     ReviewRequestModalComponent,
@@ -70,7 +72,8 @@ import { DeleteGroupModalComponent } from './groups/delete-group-modal/delete-gr
     GetAvailableClassroomsModalComponent,
     CreateGroupModalComponent,
     UpdateGroupModalComponent,
-    DeleteGroupModalComponent
+    DeleteGroupModalComponent,
+    UpdateAssignmentModalComponent
   ],
   providers: [
     RequestsService,
