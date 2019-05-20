@@ -17,6 +17,7 @@ export class AssignmentContextmenuComponent implements OnInit {
   // this data is used to remove chosen assignment
   @Input() assignment: IContextMenuAssignment;
   @Output() deleteAssignment = new EventEmitter<any>();
+  @Output() updateAssignment = new EventEmitter<any>();
 
   // this data is used to fetch available classrooms by given date, double lesson
   @Input() doubleLesson: IDoubleLesson;
@@ -32,6 +33,12 @@ export class AssignmentContextmenuComponent implements OnInit {
   onDeleteAssignment() {
     if (this.assignment.classroom.number) {
       this.deleteAssignment.emit(this.assignment);
+    }
+  }
+
+  onUpdateAssignment() {
+    if (this.assignment.classroom.number) {
+      this.updateAssignment.emit(this.assignment);
     }
   }
 

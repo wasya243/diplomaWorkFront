@@ -18,6 +18,7 @@ export class AssignmentsTableComponent implements OnInit {
   @Input() groups: Array<IGroup>;
   @Input() offsetY = 0;
   @Output() removeAssignment = new EventEmitter<IContextMenuAssignment>();
+  @Output() updateAssignment = new EventEmitter<IContextMenuAssignment>();
   @Output() getAvailableClassrooms = new EventEmitter<any>();
 
   selectedDoubleLesson: IDoubleLesson;
@@ -49,12 +50,16 @@ export class AssignmentsTableComponent implements OnInit {
     this.contextmenuX = event.x - 250;
     this.contextmenuY = event.y - 130 + this.offsetY;
     this.selectedDoubleLesson = doubleLesson;
-    this.selectedAssignment = assignment;
+    this.selectedAssignment = Object.assign(assignment, { assignmentDate: this.assignment.assignmentDate });
     this.contextmenu = true;
   }
 
   onDeleteAssignment(data) {
     this.removeAssignment.emit(data);
+  }
+
+  onUpdateAssignment(data) {
+    this.updateAssignment.emit(data);
   }
 
   onGetAvailableClassrooms(data) {

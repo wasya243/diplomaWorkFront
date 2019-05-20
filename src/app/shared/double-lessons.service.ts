@@ -13,4 +13,8 @@ export class DoubleLessonsService {
   getDoubleLessons(): Observable<Array<IDoubleLesson>> {
     return this.http.get<IDoubleLesson[]>(`/double-lessons`);
   }
+
+  getDoubleLessonById(doubleLessonId: number): Observable<IDoubleLesson> {
+    return this.http.get<IDoubleLesson>(`/double-lessons/${doubleLessonId}`);
+  }
 }

@@ -26,6 +26,11 @@ export class AssignmentsService {
     return this.http.delete(`/assignments/${assignmentId}`);
   }
 
+  // TODO: add types
+  updateAssignment(assignmentId: number, requestObject: any): Observable<any> {
+    return this.http.put(`/assignments/${assignmentId}`, requestObject);
+  }
+
   onInitAssignmentCreationSubject(): Subject<void> {
     return this.initAssignmentCreationSubject;
   }

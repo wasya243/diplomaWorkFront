@@ -53,5 +53,6 @@ declare namespace diploma {
       facultyId: number;
     };
     createdAt: string;
+    assignmentDate: string;
   }
 }

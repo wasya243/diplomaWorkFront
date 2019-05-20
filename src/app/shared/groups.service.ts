@@ -34,6 +34,10 @@ export class GroupsService {
     return this.http.put<IGroup>(`/groups/${groupId}`, groupData);
   }
 
+  getGroupById(groupId: number): Observable<IGroup> {
+    return this.http.get<IGroup>(`/groups/${groupId}`);
+  }
+
   onInitGroupCreationSubject(): Subject<void> {
     return this.initGroupCreationSubject;
   }

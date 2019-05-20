@@ -9,6 +9,7 @@ import { ClassroomsService } from '../../shared/classrooms.service';
 import { GetAvailableClassroomsModalComponent } from './get-available-classrooms-modal/get-available-classrooms-modal.component';
 import { CreateAssignmentModalComponent } from './create-assignment-modal/create-assignment-modal.component';
 import { ModalService } from '../../shared/modal/modal.service';
+import { UpdateAssignmentModalComponent } from './update-assignment-modal/update-assignment-modal.component';
 import { WeeksService } from './weeks.service';
 import { AlertService } from '../../shared/alert/alert.service';
 
@@ -135,6 +136,24 @@ export class AssignClassesComponent implements OnInit {
         this.assignments = assignments;
       });
     }, error => console.error(error));
+  }
+
+  onUpdateAssignment(data: IContextMenuAssignment) {
+    this.modalService.open(UpdateAssignmentModalComponent, { size: 'lg' }, data)
+      .then((res) => {
+        console.log(this.assignments);
+        this.assignments = this.assignments.map(outerAssignment => {
+          if (outerAssignment.assignmentDate === res.assignmentDate) {
+            outerAssignment.assignments = outerAssignment.assignments.map(innerAssignment => {
+              if (innerAssignment.id === res.id) {
+                Object.assign(innerAssignment, res);
+              }
+              return innerAssignment;
+            });
+          }
+          return outerAssignment;
+        });
+      });
   }
 
   onGetAvailableClassrooms(data: { assignmentDate: string, doubleLesson: IDoubleLesson }) {
