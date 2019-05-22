@@ -144,6 +144,7 @@ export class AssignClassesComponent implements OnInit {
         console.log(this.assignments);
         this.assignments = this.assignments.map(outerAssignment => {
           if (outerAssignment.assignmentDate === res.assignmentDate) {
+            // @ts-ignore
             outerAssignment.assignments = outerAssignment.assignments.map(innerAssignment => {
               if (innerAssignment.id === res.id) {
                 Object.assign(innerAssignment, res);
